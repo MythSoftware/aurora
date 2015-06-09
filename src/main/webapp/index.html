@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Myth</title>
+</head>
+<body>
+
+    <p>Test Api methods</p>
+
+    <ul>
+    	<li><a href="rest/jsonString">Json String</a></li>
+        <li><a href="rest/jsonMedia">Json List Media </a></li>
+        <li><a href="rest/jsonMediaList">Json List Media Type</a></li>
+        <li><a href="rest/jsonById/1432154">getUserById</a></li>
+        <li><a href="rest/jsonSearch/Joe/Blow">FindUserJoeBlow</a></li>
+        <li><a href="rest/xmlString">XML String</a></li>
+        <li><a href="rest/xmlMedia">XML Media</a></li>
+        <li><a href="rest/xmlMediaList">XML Media List</a></li>
+
+        <li><a href="rest/jsonXmlMediaList">Json using xml Media List</a></li>
+
+        <li><a href="rest/searchParameters1?limit=5&sort=lastName">Search with limit and sort</a></li>
+        <li><a href="rest/searchParameters1?limit=5&sort=lastName,-firstName">Search with limit and sort by 2</a></li>
+        <li><a href="rest/searchParameters2?limit=5&sort=lastName&sort=-firstName">Search with limit and sort by 2 in list</a></li>
+        <li><a href="rest/searchParameters3?limit=5&sort=lastName&sort=-firstName">Search with limit and sort by 2 in list by Context</a></li>
+        <li><a href="rest/searchParametersDefault?sort=lastName&sort=firstName">Search with default limit and sort</a></li>
+
+
+
+        <p></p>
+        <form action="rest/jsonPost/saveUser" method="post">
+            <input type="text" name="firstName">
+            <button type="submit">Save</button>
+        </form>
+
+    </ul>
+</body>
+</html>
