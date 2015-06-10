@@ -1,14 +1,23 @@
 package com.mythsoftware.rest.service;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import com.mythsoftware.rest.model.User;
+
+import java.util.List;
 
 /**
   */
-
-
 public interface UserService {
 
-    String createHelloMessage(String name);
+    /** Finds a user by id.
+     *
+     * @param id the unique user id
+     * @return if found, a User object, else null if user not found.
+     */
+    User findUserById(long id);
 
+    /** Gets all users
+     *
+     * @return a list of users.
+     */
+    List<User> getUsers();
 }

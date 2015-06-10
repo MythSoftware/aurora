@@ -44,6 +44,7 @@
         <property name="username"        value="sa"/>
         <property name="password"        value="" />
         <property name="initialSize"     value="1" />
+        <property name="maxTotal"     value="2" />
         <property name="maxIdle"       value="2" />
         <property name="poolPreparedStatements" value="true" />
     </bean>

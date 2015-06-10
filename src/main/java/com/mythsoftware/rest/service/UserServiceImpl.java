@@ -5,9 +5,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  *
@@ -22,19 +21,21 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public String createHelloMessage(String name) {
-        Object obj = em.getDelegate();
-        System.out.println("delegate " + name);
-        System.out.println("delegate class " + obj);
+    public User findUserById(long id) {
+        User user = null;
+        try {
+            Query query = em.createQuery("select u from User u where u.id = :id");
+            query.setParameter("id", id);
+            user = (User) query.getSingleResult();
+        } catch(javax.persistence.NoResultException e) {
+            // user will be null on Exception.
+        }
+        return user;
+    }
 
-        User user = new User();
-        user.setFirstName("joe");
-        user.setLastName("blow");
-
-        em.persist(user);
-
-        System.out.println("User id " + user.getId());
-
-        return name;
+    @Override
+    public List<User> getUsers() {
+        TypedQuery<User> query = em.createQuery("select u from User u", User.class);
+        return query.getResultList();
     }
 }
