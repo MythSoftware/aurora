@@ -20,7 +20,7 @@ public class UserResource {
     private UserService userService;
 
     @GET
-    @Path("/getUsers")
+    @Path("/users")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUsers() {
         List<User> users = userService.getUsers();
@@ -28,7 +28,7 @@ public class UserResource {
     }
 
     @GET
-    @Path("/getUserById/{id}")
+    @Path("/users/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserById(@PathParam("id") long id) {
         User user = userService.findUserById(id);
