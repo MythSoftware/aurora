@@ -1,1 +1,7 @@
 web/node_modules
+*.log
+target/
+.idea
+*.iml
+*.*~
+nohup.out
