@@ -6,3 +6,6 @@ target/
 *.*~
 nohup.out
 web/npm-debug.log
+db/testdb.tmp
+db/testdb.lck
+db/testdb.log

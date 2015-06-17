@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "express": "2.5.8",
-    "express-session": "^1.11.1",
+    "express-session": "~1.11.1",
+    "http-proxy": "~1.11.1",
     "jade": ">= 0.0.1",
-    "q": "^1.2.0"
+    "q": "~1.2.0"
   },
   "description": "This is the web module for project Aurora",
   "main": "web.js"
