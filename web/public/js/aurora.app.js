@@ -4,10 +4,6 @@ auroraApp.config(['$locationProvider', '$routeProvider',
   function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider.
-      when('/', {
-        templateUrl: 'partials/home',
-        controller: 'HomeCtrl'
-      }).
       when('/about', {
         templateUrl: 'partials/about',
         controller: 'AboutCtrl'
@@ -15,6 +11,10 @@ auroraApp.config(['$locationProvider', '$routeProvider',
       when('/users', {
         templateUrl: 'partials/users',
         controller: 'UsersCtrl'
+      }).
+      when('/:state?', {
+        templateUrl: 'partials/home',
+        controller: 'HomeCtrl'
       }).
       otherwise({
         redirectTo: '/'
