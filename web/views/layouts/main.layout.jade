@@ -1,17 +1,31 @@
 doctype html
-html(ng-app='ngApp', lang="en")
+html(ng-app='auroraApp', lang="en")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="description", content="")
     meta(name="author", content="")
+    base(href="/")
     title Aurora
     link(href="/lib/bootstrap-3.3.4-dist/css/bootstrap.min.css", rel="stylesheet")
     link(href="/css/navbar-static-top.css", rel="stylesheet")
+    link(href="/css/styles.css", rel="stylesheet")
+    script(src="/lib/js/angular.min.js")
+    script(src="/lib/js/ng-route.min.js")
+    script(src="/js/aurora.app.js")
+    // mixin controllers
+    script(src="/js/mixin/loadable.mixin.js")
+    // controllers
+    script(src="/js/controller/header/header.left.ctrl.js")
+    script(src="/js/controller/pages/home/home.ctrl.js")
+    script(src="/js/controller/pages/about/about.ctrl.js")
   body
     block header
     block main
     div(class="hidden")
       block hidden
     block footer
+    script(src="/lib/js/jquery.min.js")
+    script(src="/lib/bootstrap-3.3.4-dist/js/bootstrap.min.js")
+
