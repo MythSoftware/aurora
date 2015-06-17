@@ -10,5 +10,10 @@
     "q": "~1.2.0"
   },
   "description": "This is the web module for project Aurora",
-  "main": "web.js"
+  "main": "web.js",
+  "apidoc": {
+    "title": "Aurora API",
+    "description": "Public API for Aurora",
+    "url": "http://localhost:9091/rest"
+  }
 }
