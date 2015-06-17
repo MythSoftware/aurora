@@ -24,15 +24,15 @@ var renderIndex = function (req, res) {
   res.render('index', pageData);
 };
 
-app.get('/', function (req, res) {
-  renderIndex(req, res);
-});
-
 app.get('/about', function (req, res) {
   renderIndex(req, res);
 });
 
 app.get('/users', function (req, res) {
+  renderIndex(req, res);
+});
+
+app.get('/:state?', function (req, res) {
   renderIndex(req, res);
 });
 

@@ -1,9 +1,22 @@
-auroraApp.controller('HomeCtrl', function($scope, $controller) {
-  angular.extend(this, $controller('LoadableMixin', {$scope: $scope}));
+auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
+  var _stateTabs;
 
-  // wait for a second to simulate loading
-  setTimeout(function () {
-    $scope.setLoading(false);
-    $scope.$apply();
-  }, 1000);
+  var init = function () {
+    var abbr;
+    _stateTabs = [];
+    if ($routeParams.state) {
+      abbr = $routeParams.state.toUpperCase();
+      if (!StateHash[abbr]) {
+        $location.path('/');
+      }
+      else {
+        _stateTabs.push(StateHash[abbr]);
+      }
+    }
+  };
+  init();
+
+  $scope.getStateTabs = function () {
+    return _stateTabs;
+  };
 });
