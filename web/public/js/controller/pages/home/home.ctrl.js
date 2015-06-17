@@ -1,8 +1,6 @@
 auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
   var _stateTabs;
 
-  glob = $location;
-
   var init = function () {
     var abbr;
     _stateTabs = [];

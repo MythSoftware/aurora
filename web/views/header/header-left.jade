@@ -1,5 +1,5 @@
 ul(ng-controller="HeaderLeftCtrl as headerLeftCtrl", class="nav navbar-nav")
-  li(class="{{getCurrentPath() == '/' && 'active' || ''}}")
+  li(class="{{isHome() && 'active' || ''}}")
     a(href="/") Home
   li(class="{{getCurrentPath() == '/about' && 'active' || ''}}")
     a(href="/about") About
