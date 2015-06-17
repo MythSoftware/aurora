@@ -32,12 +32,20 @@ app.get('/about', function (req, res) {
   renderIndex(req, res);
 });
 
+app.get('/users', function (req, res) {
+  renderIndex(req, res);
+});
+
 app.get('/partials/home', function (req, res) {
   res.render('partials/home/home.jade');
 });
 
 app.get('/partials/about', function (req, res) {
   res.render('partials/about/about.jade');
+});
+
+app.get('/partials/users', function (req, res) {
+  res.render('partials/users/users.jade');
 });
 
 var userProxy = require('./proxy/UserProxy')(app);

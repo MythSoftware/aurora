@@ -1,0 +1,5 @@
+extends ../../templates/loading.content.jade
+block content
+  ul
+    li(ng-repeat="user in getUsers()")
+      div {{user.firstName}} {{user.lastName}}
