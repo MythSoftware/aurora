@@ -3,3 +3,6 @@ block content
   ul(class="nav nav-tabs")
     li(ng-repeat="stateTab in getStateTabs()", role="presentation", class="active")
       a {{stateTab}}
+    li(role="presentation", class="{{isAdding() && 'active' || ''}}")
+      a(href="/add")
+        span(class="glyphicon glyphicon-plus")

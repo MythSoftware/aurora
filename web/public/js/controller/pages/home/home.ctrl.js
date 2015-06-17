@@ -6,15 +6,19 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
     _stateTabs = [];
     if ($routeParams.state) {
       abbr = $routeParams.state.toUpperCase();
-      if (!StateHash[abbr]) {
+      if (abbr != 'ADD' && !StateHash[abbr]) {
         $location.path('/');
       }
-      else {
+      else if (abbr != 'ADD') {
         _stateTabs.push(StateHash[abbr]);
       }
     }
   };
   init();
+
+  $scope.isAdding = function () {
+    return !$routeParams.state || $routeParams.state.toUpperCase() == 'ADD';
+  };
 
   $scope.getStateTabs = function () {
     return _stateTabs;
