@@ -5,3 +5,4 @@ target/
 *.iml
 *.*~
 nohup.out
+web/npm-debug.log

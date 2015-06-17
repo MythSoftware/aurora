@@ -28,6 +28,18 @@ app.get('/', function (req, res) {
   renderIndex(req, res);
 });
 
+app.get('/about', function (req, res) {
+  renderIndex(req, res);
+});
+
+app.get('/partials/home', function (req, res) {
+  res.render('partials/home/home.jade');
+});
+
+app.get('/partials/about', function (req, res) {
+  res.render('partials/about/about.jade');
+});
+
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
