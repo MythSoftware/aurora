@@ -7,7 +7,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
     if (!localStorage['stateTabs']) {
       localStorage['stateTabs'] = '{}';
     }
-    _stateTabs = JSON.parse(localStorage['stateTabs']);
+    _stateTabs = alphebetizeByState(JSON.parse(localStorage['stateTabs']));
     if ($routeParams.state) {
       abbr = $routeParams.state.toUpperCase();
       if (abbr != 'ADD' && !StateHash[abbr]) {
@@ -23,6 +23,21 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
     }
   };
 
+  var alphebetizeByState = function (obj) {
+    var stateNames, stateTabs, abbr;
+    stateTabs = {};
+    stateNames = [];
+    for (abbr in obj) {
+      stateNames.push(StateHash[abbr]);
+    }
+    stateNames.sort();
+    console.log('stateNames ' + stateNames);
+    stateNames.forEach(function (name) {
+      stateTabs[StateHash.reverse[name]] = name;
+    });
+    return stateTabs;
+  };
+
   $scope.isAdding = function () {
     if (localStorage['activeTab'] == 'ADD' || !$routeParams || !localStorage['activeTab']) {
       return true;
@@ -34,7 +49,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
   };
 
   $scope.getStateTabs = function () {
-    return _stateTabs;
+    return Object.keys(_stateTabs);
   };
 
   $scope.isActive = function (tab) {
@@ -47,6 +62,30 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
 
   $scope.getAllStates = function () {
     return _allStates;
+  };
+
+  $scope.closeTab = function (abbr, e) {
+    e.stopPropagation();
+    e.preventDefault();
+    delete _stateTabs[abbr];
+    localStorage['stateTabs'] = JSON.stringify(_stateTabs);
+    if (localStorage['activeTab'] == abbr) {
+      gotoNextTab();
+    }
+  };
+
+  var gotoNextTab = function () {
+    var stateTabs, abbr, currentTab;
+    stateTabs = alphebetizeByState(JSON.parse(localStorage['stateTabs']));
+    hasNext = false;
+    currentTab = localStorage['activeTab'];
+    for (abbr in stateTabs) {
+      if (abbr > currentTab) {
+        $location.path('/' + abbr);
+        return;
+      }
+    }
+    $location.path('/add');
   };
 
   var buildAllStates = function () {

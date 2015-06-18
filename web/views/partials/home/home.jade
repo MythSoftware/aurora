@@ -1,10 +1,13 @@
 extends ../../templates/loading.content.jade
 block content
   ul(class="nav nav-tabs")
-    li(ng-repeat="(abbr, tab) in getStateTabs()",
+    li(ng-repeat="abbr in getStateTabs()",
       role="presentation",
       class="{{isActive(abbr) && 'active' || ''}}")
-      a(href="/{{abbr}}") {{getStateName(abbr)}}
+      a(href="/{{abbr}}")
+        span {{getStateName(abbr)}}
+        small
+          span(ng-click="closeTab(abbr, $event)", class="active-hover glyphicon glyphicon-remove")
     li(role="presentation", class="{{isAdding() && 'active' || ''}}")
       a(href="/add")
         span(class="glyphicon glyphicon-plus")
