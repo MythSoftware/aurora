@@ -1,4 +1,4 @@
-auroraApp.controller('HeaderLeftCtrl', function($scope, $location, $routeParams, $controller) {
+auroraApp.controller('HeaderLeftCtrl', function($scope, $location, $routeParams) {
   
   $scope.getCurrentPath = function () {
     return $location.path();
