@@ -1,0 +1,11 @@
+div(class="tab-panel panel panel-default")
+  div(class="panel-heading")
+    h3(class="panel-title") Track food threats near you
+  div(class="panel-body")
+    div(class="dropdown")
+      button(class="btn btn-default btn-lg dropdown-toggle", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true")
+        span Select State
+        span(class="caret")
+      ul(class="clipped-dropdown dropdown-menu", aria-labelledby="dropdownMenu1")
+        li(ng-repeat="abbr in getAllStates()")
+          a(href="/{{abbr}}") {{getStateName(abbr)}}

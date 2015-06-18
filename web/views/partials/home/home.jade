@@ -1,8 +1,12 @@
 extends ../../templates/loading.content.jade
 block content
   ul(class="nav nav-tabs")
-    li(ng-repeat="stateTab in getStateTabs()", role="presentation", class="active")
-      a {{stateTab}}
+    li(ng-repeat="(abbr, tab) in getStateTabs()",
+      role="presentation",
+      class="{{isActive(abbr) && 'active' || ''}}")
+      a(href="/{{abbr}}") {{getStateName(abbr)}}
     li(role="presentation", class="{{isAdding() && 'active' || ''}}")
       a(href="/add")
         span(class="glyphicon glyphicon-plus")
+  div(ng-if="isAdding()")
+    include select.state.form.jade
