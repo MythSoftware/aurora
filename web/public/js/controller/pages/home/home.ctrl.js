@@ -7,7 +7,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
     if (!localStorage['stateTabs']) {
       localStorage['stateTabs'] = '{}';
     }
-    _stateTabs = alphebetizeByState(JSON.parse(localStorage['stateTabs']));
+    _stateTabs = alphabetizeByState(JSON.parse(localStorage['stateTabs']));
     if ($routeParams.state) {
       abbr = $routeParams.state.toUpperCase();
       if (abbr != 'ADD' && !StateHash[abbr]) {
@@ -23,7 +23,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
     }
   };
 
-  var alphebetizeByState = function (obj) {
+  var alphabetizeByState = function (obj) {
     var stateNames, stateTabs, abbr;
     stateTabs = {};
     stateNames = [];
