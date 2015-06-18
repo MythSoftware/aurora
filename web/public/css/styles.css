@@ -11,3 +11,12 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.tab-panel {
+  margin-top: 20px;
+}
+
+.clipped-dropdown {
+  max-height: 280px;
+  overflow: auto;
+}

@@ -5,7 +5,7 @@ auroraApp.controller('HeaderLeftCtrl', function($scope, $location, $routeParams)
   };
 
   $scope.isHome = function () {
-    return $location.path() == '/'
+    return $location.path() == '/' || $location.path() == '/add'
       || ($routeParams.state && StateHash[$routeParams.state.toUpperCase()]);
   };
 
