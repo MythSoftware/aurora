@@ -16,6 +16,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
       else if (abbr != 'ADD') {
         saveTabIfNotInStorage(abbr);
         localStorage['activeTab'] = abbr;
+        _stateTabs = alphabetizeByState(JSON.parse(localStorage['stateTabs']));
       }
       else if (abbr == 'ADD' || !localStorage['activeTab']) {
         localStorage['activeTab'] = 'ADD';
@@ -75,7 +76,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
 
   var gotoNextTab = function () {
     var stateTabs, abbr, currentTab;
-    stateTabs = alphebetizeByState(JSON.parse(localStorage['stateTabs']));
+    stateTabs = alphabetizeByState(JSON.parse(localStorage['stateTabs']));
     hasNext = false;
     currentTab = localStorage['activeTab'];
     for (abbr in stateTabs) {
