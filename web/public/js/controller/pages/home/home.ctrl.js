@@ -8,9 +8,6 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
       localStorage['stateTabs'] = '{}';
     }
     _stateTabs = JSON.parse(localStorage['stateTabs']);
-    if (!localStorage['stateTabs']) {
-      //localStorage['stateTabs'] = '{}';
-    }
     if ($routeParams.state) {
       abbr = $routeParams.state.toUpperCase();
       if (abbr != 'ADD' && !StateHash[abbr]) {
