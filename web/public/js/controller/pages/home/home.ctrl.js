@@ -31,7 +31,6 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
       stateNames.push(StateHash[abbr]);
     }
     stateNames.sort();
-    console.log('stateNames ' + stateNames);
     stateNames.forEach(function (name) {
       stateTabs[StateHash.reverse[name]] = name;
     });
