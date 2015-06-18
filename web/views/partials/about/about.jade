@@ -2,7 +2,9 @@ extends ../../templates/loading.content.jade
 block content
   div(class="jumbotron")
     h1 About
-    p This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.
-    p To see the difference between static and fixed top navbars, just scroll.
+    p {{aboutmessage}} 
+    br
+    h2 Who are we?
+    p {{aboutus}}
     p
-      a(class="btn btn-lg btn-primary", href="http://www.google.com", role="button") Go to Google &raquo;
+      a(class="btn btn-lg btn-primary", href="/", role="button") Return Home &raquo;
