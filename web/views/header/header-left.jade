@@ -1,23 +1,5 @@
 ul(ng-controller="HeaderLeftCtrl as headerLeftCtrl", class="nav navbar-nav")
   li(class="{{isHome() && 'active' || ''}}")
-    a(href="/") Home
+    a(href="/") Food Recalls
   li(class="{{getCurrentPath() == '/about' && 'active' || ''}}")
     a(href="/about") About
-  li(class="{{getCurrentPath() == '/users' && 'active' || ''}}")
-    a(href="/users") Users
-  li(class="dropdown")
-    a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-expanded="false") Dropdown
-      span(class="caret")
-    ul(class="dropdown-menu", role="menu")
-      li
-        a(href="#") Action
-      li
-        a(href="#") Another action
-      li
-        a(href="#") Something else here
-      li(class="divider")
-      li(class="dropdown-header") Nav header
-      li
-        a(href="#") Separated link
-      li
-        a(href="#") One more separated link

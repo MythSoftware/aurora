@@ -1,8 +1,12 @@
 ul(class="nav navbar-nav navbar-right")
+  li(class="dropdown")
+    a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-expanded="false") Alerts
+      span(class="caret")
+    ul(class="dropdown-menu", role="menu")
+      li
+        a(href="#") Subscribe
+      li
+        a(href="#") Unsubscribe
   li
-    a(href="#") One
-  li(class="active")
-    a(href="#") Two
+    a(href="#") Feedback
       span(class="sr-only") (current)
-  li
-    a(href="#") Three
