@@ -1,9 +1,7 @@
 auroraApp.factory('featureService', function () {
 
   // quick and dirty
-  // "_features" needs to be moved to a properties
-  // file outside the project structure for different
-  // environments
+  // "_features" needs to a database
   var _features = {
     alerts: function () {
       return false;
