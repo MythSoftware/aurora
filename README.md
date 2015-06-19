@@ -17,4 +17,4 @@
 
 ## DevOps
 
-[Aurora](http://104.239.221.59/) utilizes Ansible and docker for configuration management and the ability to quickly ship code with zero down time using a rolling deployment strategy.  For more details, see our [DevOps README](devops).
+[Aurora](http://104.239.221.59/) utilizes [Ansible](http://www.ansible.com/home) and [Docker](https://www.docker.com) for configuration management and the ability to quickly ship code with zero down time using a rolling deployment strategy.  For more details, see our [DevOps README](devops).
