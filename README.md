@@ -1,4 +1,4 @@
-# aurora - web
+# Aurora
 
 [Aurora](#) is an open source project to help citizens become better informed regarding food safety and food recalls affecting their area.  It is developed and maintained by [Myth Software](http://www.mythsoftware.com).
 
