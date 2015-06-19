@@ -14,7 +14,7 @@
     - name: Create Directory for Code
       file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
     - name: check out code from github
-      git: repo=git@github.com:MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
+      git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       register: latest_code
     - set_fact: git_version={{ latest_code.after }}
     - set_fact: git_changed={{ latest_code.changed }}
