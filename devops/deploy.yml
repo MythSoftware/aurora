@@ -13,7 +13,7 @@
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Create Directory for Code
       file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
-    - name: check out code from github
+    - name: Check out code from github
       git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       register: latest_code
     - set_fact: git_version={{ latest_code.after }}
@@ -28,9 +28,8 @@
     - name: Create Directory for Code
       sudo: no
       file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
-    - name: Syncronize Tagnabbit Code
-      sudo: no
-      synchronize: src=/home/orcha/proj/aurora dest=/home/orcha/proj recursive=true compress=no
+    - name: Check out code from github
+      git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       # when: hostvars['127.0.0.1'].git_changed
     - name: Drain Load Balancer Node
       sudo: no
