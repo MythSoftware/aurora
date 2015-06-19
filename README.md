@@ -12,5 +12,5 @@
 3. Change directory to the project home
   - *cd /path/to/aurora/web*
 4. Run this convenience script to build a docker container and run it
-  - *./scripts/startWithDocker.sh* (tested in Ubuntu 14.04)
+  - *./devops/start.sh* (tested in Ubuntu 14.04)
 5. Navigate to **[http://localhost:8888](http://localhost:8888)**
