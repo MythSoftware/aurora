@@ -34,8 +34,6 @@
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Install git
       apt: name=git state=present
-    - name: Install Docker
-      apt: name="docker" state=present
     - name: Create Directory for Code
       sudo: no
       file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
