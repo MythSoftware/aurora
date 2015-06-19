@@ -31,15 +31,15 @@
     - name: Syncronize Tagnabbit Code
       sudo: no
       synchronize: src=/home/orcha/proj/aurora dest=/home/orcha/proj recursive=true compress=no
-      when: hostvars['127.0.0.1'].git_changed
+      # when: hostvars['127.0.0.1'].git_changed
     - name: Drain Load Balancer Node
       sudo: no
       command: node /home/orcha/proj/aurora/devops/drainNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
-      when: hostvars['127.0.0.1'].git_changed
+      # when: hostvars['127.0.0.1'].git_changed
     - name: Start Docker Container
       local_action: file path=/home/orcha/proj/aurora/devops/startWithDocker.sh state=touch mode="u+rwx" owner="orcha" group="orcha"
-      when: hostvars['127.0.0.1'].git_changed
+      # when: hostvars['127.0.0.1'].git_changed
     - name: Enable Load Balancer Node
       sudo: no
       command: node /home/orcha/proj/aurora/devops/enableNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
-      when: hostvars['127.0.0.1'].git_changed
+      # when: hostvars['127.0.0.1'].git_changed
