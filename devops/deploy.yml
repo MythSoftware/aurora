@@ -9,7 +9,6 @@
       apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
     - name: Install NPM
       apt: name=npm state=present
-    - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Create symlink to node
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Create Directory for Code
@@ -17,6 +16,7 @@
     - name: Check out code from github
       git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       register: latest_code
+    - shell: npm install chdir=/home/orcha/proj/aurora
     - set_fact: git_version={{ latest_code.after }}
     - set_fact: git_changed={{ latest_code.changed }}
 - hosts: web
@@ -30,7 +30,6 @@
       apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
     - name: Install NPM
       apt: name=npm state=present
-    - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Create symlink to node
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Install git
@@ -41,6 +40,7 @@
     - name: Check out code from github
       git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       # when: hostvars['127.0.0.1'].git_changed
+    - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Drain Load Balancer Node
       sudo: no
       command: node /home/orcha/proj/aurora/devops/drainNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
