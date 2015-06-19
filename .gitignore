@@ -1,11 +1,8 @@
-web/node_modules
+node_modules
 *.log
-target/
 .idea
 *.iml
 *.*~
 nohup.out
-web/npm-debug.log
-db/testdb.tmp
-db/testdb.lck
-db/testdb.log
+npm-debug.log
+public/apidoc
