@@ -25,6 +25,8 @@
   tasks:
     - name: Allow HTTP port 8888
       ufw: rule=allow port=8888 proto=tcp
+    - name: Install NodeJS
+      apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
     - name: Install git
       apt: name=git state=present
     - name: Create Directory for Code
