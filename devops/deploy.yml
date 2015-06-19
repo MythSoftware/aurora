@@ -48,9 +48,7 @@
     - name: Make docker start executable
       local_action: file path=/home/orcha/proj/aurora/devops/start.sh state=touch mode="u+rwx" owner="orcha" group="orcha"
       # when: hostvars['127.0.0.1'].git_changed
-    - name: Start Docker Container
-      sudo: no
-      local_action: command /home/orcha/proj/aurora/devops/start.sh
+    - shell: ./devops/start.sh chdir=/home/orcha/proj/aurora
       # when: hostvars['127.0.0.1'].git_changed
     - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Enable Load Balancer Node
