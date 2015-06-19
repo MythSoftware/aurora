@@ -14,7 +14,32 @@
     - name: Create Directory for Code
       file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
     - name: check out code from github
-      git: repo=git@github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
+      git: repo=git@github.com:MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       register: latest_code
     - set_fact: git_version={{ latest_code.after }}
     - set_fact: git_changed={{ latest_code.changed }}
+- hosts: web
+  serial: 1
+  vars_files:
+    - /home/orcha/proj/aurora/devops/secret_vars.yml
+  tasks:
+    - name: Allow HTTP port 8888
+      ufw: rule=allow port=8888 proto=tcp
+    - name: Create Directory for Code
+      sudo: no
+      file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
+    - name: Syncronize Tagnabbit Code
+      sudo: no
+      synchronize: src=/home/orcha/proj/aurora dest=/home/orcha/proj recursive=true compress=no
+      when: hostvars['127.0.0.1'].git_changed
+    - name: Drain Load Balancer Node
+      sudo: no
+      command: node /home/orcha/proj/aurora/devops/drainNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
+      when: hostvars['127.0.0.1'].git_changed
+    - name: Start Docker Container
+      local_action: file path=/home/orcha/proj/aurora/devops/startWithDocker.sh state=touch mode="u+rwx" owner="orcha" group="orcha"
+      when: hostvars['127.0.0.1'].git_changed
+    - name: Enable Load Balancer Node
+      sudo: no
+      command: node /home/orcha/proj/aurora/devops/enableNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
+      when: hostvars['127.0.0.1'].git_changed
