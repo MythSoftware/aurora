@@ -9,8 +9,7 @@
       apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
     - name: Install NPM
       apt: name=npm state=present
-    - name: Install Node Dependencies
-      - shell: npm install chdir=/home/orcha/proj/aurora
+    - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Create symlink to node
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Create Directory for Code
@@ -31,8 +30,7 @@
       apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
     - name: Install NPM
       apt: name=npm state=present
-    - name: Install Node Dependencies
-      - shell: npm install chdir=/home/orcha/proj/aurora
+    - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Create symlink to node
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Install git
