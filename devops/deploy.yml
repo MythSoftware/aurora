@@ -27,6 +27,8 @@
       ufw: rule=allow port=8888 proto=tcp
     - name: Install NodeJS
       apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
+    - name: Create symlink to node
+      file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Install git
       apt: name=git state=present
     - name: Create Directory for Code
