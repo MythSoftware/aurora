@@ -5,7 +5,7 @@ var apiKey = process.argv[3];
 var loadBalancerId = process.argv[4];
 var serviceNet = process.argv[5];
 
-var SECONDS_TO_WAIT = 20;
+var SECONDS_TO_WAIT = 10;
 
 var tries = 0;
 
