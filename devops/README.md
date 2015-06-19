@@ -19,9 +19,9 @@ The orchestration server is a cloud server for orchestrating integration testing
 ### Cloud Load Balancer
 The cloud load balancer distributes network traffic to the web servers.
 
-### Web Server Image
+### Web Image
 
-The web server image is an image we can use to spin up web servers
+The web image is an image we can use to spin up web servers
 
 * OS - Ubuntu 12.04
 * SSH keys are configured to allow SSH access from a designated user from the orchestration server
