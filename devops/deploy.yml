@@ -25,6 +25,8 @@
   tasks:
     - name: Allow HTTP port 8888
       ufw: rule=allow port=8888 proto=tcp
+    - name: Install git
+      apt: name=git state=present
     - name: Create Directory for Code
       sudo: no
       file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
