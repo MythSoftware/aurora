@@ -5,6 +5,9 @@ auroraApp.factory('featureService', function () {
   var _features = {
     alerts: function () {
       return false;
+    },
+    feedback: function () {
+      return false;
     }
   };
 

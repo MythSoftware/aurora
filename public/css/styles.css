@@ -89,3 +89,8 @@ body {
 .recall-details .control-label {
   padding-top: 0;
 }
+
+.loading-div {
+  padding-bottom: 20px;
+  text-align: center;
+}

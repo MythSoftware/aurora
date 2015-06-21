@@ -7,6 +7,6 @@ ul(ng-controller="HeaderRightCtrl as headerRightCtrl", class="nav navbar-nav nav
         a(href="#") Subscribe
       li
         a(href="#") Unsubscribe
-  li
+  li(ng-if="hasFeature('feedback')")
     a(href="#") Feedback
       span(class="sr-only") (current)
