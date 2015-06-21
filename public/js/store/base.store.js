@@ -20,7 +20,7 @@ store.BaseStore = function (options) {
   angular.extend(this, Pubsubable.prototype);
   this.pollInterval_ = options.pollInterval || 5;
   this.url_ = options.url;
-  this.params_ = {};
+  this.params_ = options.params || {};
   for (var key in options.params) {
     this.params_[key] = options.params[key];
   }
@@ -51,4 +51,8 @@ store.BaseStore.prototype.fetch = function () {
       this.publish(store.Event.ERROR, res);
     }.bind(this)
   );
+};
+
+store.BaseStore.prototype.getParams = function () {
+  return this.params_;
 };

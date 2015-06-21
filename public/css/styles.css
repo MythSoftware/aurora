@@ -46,3 +46,46 @@ body {
 .dropdown .caret {
   margin-left: 6px;
 }
+
+.loadable {
+  position: relative;
+  min-height: 200px;
+}
+
+.inner-container {
+  margin-top: 22px;
+}
+
+.recall-panel .label-container {
+  float: left;
+  width: 90px;
+}
+
+.recall-panel .label-container .glyphicon {
+  margin-right: 10px;
+  opacity: 0.7;
+}
+
+.recall-panel .recall-li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.recall-panel .recall-li:hover {
+  background-color: #eee;
+}
+
+.recall-panel .recall-li:hover .glyphicon {
+  opacity: 0.9;
+}
+
+.recall-details {
+  margin-top: 12px;
+  white-space: normal;
+}
+
+.recall-details .control-label {
+  padding-top: 0;
+}

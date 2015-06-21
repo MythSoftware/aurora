@@ -13,3 +13,7 @@ store.CollectionStore.prototype.handleFetch = function (res) {
 store.CollectionStore.prototype.getCollection = function (res) {
   return this.collection_;
 };
+
+store.CollectionStore.prototype.setCollection = function (collection) {
+  this.collection_ = collection;
+};

@@ -1,0 +1,34 @@
+// scope here is RecallTabCtrl
+extends ../../templates/loading.content.jade
+block content
+  div(class="alert alert-warning" role="alert", ng-if="getRecallStore().getCollection().length > 0") {{getRecallStore().getMeta().disclaimer}}
+  div(class="alert alert-success", role="alert", ng-if="getRecallStore().getCollection().length == 0") Awesome! No recalls were found.
+  div(class="panel panel-default recall-panel")
+    ul(class="list-group")
+      li(ng-repeat="recall in getRecallStore().getCollection()", ng-click="toggleExpand(recall)" class="recall-li list-group-item")
+        div(class="label-container")
+          span(ng-if="!isExpanded(recall)", class="glyphicon glyphicon-expand")
+          span(ng-if="isExpanded(recall)", class="glyphicon glyphicon-collapse-down")
+          span(class="label {{getClassificationClass(recall)}}") {{recall.classification}}
+        span(ng-if="!isExpanded(recall)") {{recall.product_description}}
+        div(ng-if="isExpanded(recall)", class="recall-details")
+          br
+          div(class="form-horizontal", role="form")
+            div(class="form-group")
+              label(class="control-label col-sm-2") Initiation Date:
+              div(class="col-sm-10") {{fromNow(recall.recall_initiation_date)}}
+            div(class="form-group")
+              label(class="control-label col-sm-2") Distribution Pattern:
+              div(class="col-sm-10") {{recall.distribution_pattern}}
+            div(class="form-group")
+              label(class="control-label col-sm-2") Product Description:
+              div(class="col-sm-10") {{recall.product_description}}
+            div(class="form-group")
+              label(class="control-label col-sm-2") Reason for Recall:
+              div(class="col-sm-10") {{recall.reason_for_recall}}
+            div(class="form-group")
+              label(class="control-label col-sm-2") Voluntary or Mandated:
+              div(class="col-sm-2") {{recall.voluntary_mandated}}
+            div(class="form-group")
+              label(class="control-label col-sm-2") Status:
+              div(class="col-sm-2") {{recall.status}}
