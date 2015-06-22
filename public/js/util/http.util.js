@@ -4,10 +4,6 @@ var httpUtil = {
       url: url,
       data: form,
       type: method,
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('x-auth-token', opt_token || localStorage['token']);
-        xhr.setRequestHeader('x-canary', $('#canary').val());
-      },
       success: function(data, textStatus, jqXHR) {
         if (onSuccess) {
           onSuccess(data);

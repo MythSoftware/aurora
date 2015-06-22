@@ -19,3 +19,8 @@ store.CollectionStore.prototype.setCollection = function (collection) {
 };
 
 store.CollectionStore.prototype.fetchNext = function () {};
+
+store.CollectionStore.prototype.refresh = function () {
+  store.BaseStore.prototype.refresh.call(this);
+  this.collection_ = [];
+};

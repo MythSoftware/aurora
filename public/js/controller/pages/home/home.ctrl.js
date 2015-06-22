@@ -1,11 +1,12 @@
 auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams, recallService) {
-  var _stateTabs, _allStates, _stateCountSubIds;
+  var _stateTabs, _allStates, _recallServiceSubIds;
 
   var init = function () {
     var abbr;
     $scope.$on("$destroy", destroy);
-    _stateCountSubIds = [];
-    _stateCountSubIds.push(recallService.subscribe(recallService.Event.FETCH_COUNT, handleFetchCount));
+    _recallServiceSubIds = [];
+    _recallServiceSubIds.push(recallService.subscribe(recallService.Event.UPDATE_CRIT, fetchCounts));
+    _recallServiceSubIds.push(recallService.subscribe(recallService.Event.FETCH_COUNT, handleFetchCount));
     buildAllStates();
     if (!localStorage['stateTabs']) {
       localStorage['stateTabs'] = '{}';
@@ -29,7 +30,7 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams, recal
   };
 
   var destroy = function () {
-    recallService.unsubscribe(_stateCountSubIds);
+    recallService.unsubscribe(_recallServiceSubIds);
   };
 
   var fetchCounts = function () {
