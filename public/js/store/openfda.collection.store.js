@@ -62,3 +62,8 @@ store.OpenFDACollectionStore.prototype.fetchNext = function (res) {
     + this.getMeta().results.limit;
   this.fetch();
 };
+
+store.OpenFDACollectionStore.prototype.refresh = function () {
+  store.CollectionStore.prototype.refresh.call(this);
+  this.meta_ = [];
+};
