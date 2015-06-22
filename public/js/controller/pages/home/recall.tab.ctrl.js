@@ -26,6 +26,7 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
   var destroy = function () {
     _recallStore.unsubscribe(_subIds);
     _scrollDetector.unsubscribe(_scrollDetectorSubIds);
+    _scrollDetector.destroy();
   };
 
   $scope.isExpanded = function (recall) {
