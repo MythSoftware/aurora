@@ -38,7 +38,6 @@ var StateHash =  {
   'OH': 'Ohio',
   'OK': 'Oklahoma',
   'OR': 'Oregon',
-  'PW': 'Palau',
   'PA': 'Pennsylvania',
   'PR': 'Puerto Rico',
   'RI': 'Rhode Island',

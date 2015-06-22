@@ -1,6 +1,7 @@
 extends ../../templates/loading.content.jade
 block content
   div(class="container")
+    include crit.jade
     ul(class="nav nav-tabs")
       li(ng-repeat="abbr in getStateTabs()",
         role="presentation",

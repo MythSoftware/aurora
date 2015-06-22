@@ -1,0 +1,22 @@
+nav(ng-controller="CritCtrl as critCtrl", class="crit-navbar navbar-form navbar-default")
+  div(class="container-fluid")
+  div(class="navbar-header")
+    button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#crit-navbar", aria-expanded="false")
+      span(class="sr-only") Toggle navigation
+      span(class="icon-bar")
+      span(class="icon-bar")
+      span(class="icon-bar")
+  div#crit-navbar(class="collapse navbar-collapse")
+    ul(class="nav navbar-nav")
+      li(class="dropdown")
+        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}
+          span(class="caret")
+        ul(class="dropdown-menu")
+          li
+            a(ng-click="selectWhen('WEEK')") {{getWhenLabel('WEEK')}}
+          li
+            a(ng-click="selectWhen('MONTH')") {{getWhenLabel('MONTH')}}
+          li
+            a(ng-click="selectWhen('SIX_MONTHS')") {{getWhenLabel('SIX_MONTHS')}}
+          li
+            a(ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}

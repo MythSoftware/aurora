@@ -16,13 +16,18 @@ store.BaseStore = function (options) {
   if (!options.url) {
     throw 'options.url is required.';
   }
+  this.initialOptions_ = options;
   angular.extend(this, new Pubsubable());
   angular.extend(this, Pubsubable.prototype);
-  this.pollInterval_ = options.pollInterval || 5;
-  this.url_ = options.url;
-  this.params_ = options.params || {};
-  for (var key in options.params) {
-    this.params_[key] = options.params[key];
+  this.refresh();
+};
+
+store.BaseStore.prototype.refresh = function () {
+  this.url_ = this.initialOptions_.url;
+  this.params_ = this.initialOptions_.params;
+  this.pollInterval_ = this.initialOptions_.pollInterval || 5;
+  for (var key in this.initialOptions_.params) {
+    this.params_[key] = this.initialOptions_.params[key];
   }
 };
 
