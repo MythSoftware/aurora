@@ -1,0 +1,48 @@
+body {
+  padding-top: 70px;
+}
+
+.hcenter {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.vcenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tab-panel {
+  margin-top: 20px;
+}
+
+.clipped-dropdown {
+  max-height: 280px;
+  overflow: auto;
+}
+
+.nav-tabs li a .glyphicon-remove {
+  margin-left: 6px;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.nav-tabs li a .glyphicon-remove:hover {
+  opacity: 1;
+}
+
+.nav-tabs .active-hover {
+  display: none;
+}
+
+.nav-tabs li.active .active-hover {
+  display: inline;
+}
+
+.dropdown .caret {
+  margin-left: 6px;
+}

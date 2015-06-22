@@ -1,0 +1,44 @@
+doctype html
+html(ng-app='auroraApp', lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="")
+    meta(name="author", content="")
+    base(href="/")
+    title Aurora
+    link(href="/lib/bootstrap-3.3.4-dist/css/bootstrap.min.css", rel="stylesheet")
+    link(href="/css/navbar-static-top.css", rel="stylesheet")
+    link(href="/css/styles.css", rel="stylesheet")
+    script(src="/lib/js/angular.min.js")
+    script(src="/lib/js/ng-route.min.js")
+    script(src="/js/aurora.app.js")
+    script(src="/js/globals/state.hash.js")
+    // store
+    script(src="/js/store/base.store.js")
+    script(src="/js/store/collection.store.js")
+    // utils
+    script(src="/js/util/http.util.js")
+    script(src="/js/mixin/pubsubable.mixin.js")
+    // services
+    script(src="/js/service/feature.service.js")
+    // mixin controllers
+    script(src="/js/mixin/loadable.mixin.js")
+    script(src="/js/mixin/feature.mixin.js")
+    // controllers
+    script(src="/js/controller/header/header.left.ctrl.js")
+    script(src="/js/controller/header/header.right.ctrl.js")
+    script(src="/js/controller/pages/home/home.ctrl.js")
+    script(src="/js/controller/pages/about/about.ctrl.js")
+    script(src="/js/controller/pages/users/users.ctrl.js")
+    script(src="/js/controller/pages/contact/contact.ctrl.js")
+  body
+    block header
+    block main
+    div(class="hidden")
+      block hidden
+    block footer
+    script(src="/lib/js/jquery.min.js")
+    script(src="/lib/bootstrap-3.3.4-dist/js/bootstrap.min.js")
+

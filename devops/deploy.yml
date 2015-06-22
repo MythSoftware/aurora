@@ -1,0 +1,57 @@
+---
+- name: Run Orcha Local Tasks
+  hosts: 127.0.0.1
+  connection: local
+  vars:
+    serverName: orcha
+  tasks:
+    - name: Install NodeJS
+      apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
+    - name: Install NPM
+      apt: name=npm state=present
+    - name: Create symlink to node
+      file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
+    - name: Create Directory for Code
+      file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
+    - name: Check out code from github
+      git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
+      register: latest_code
+    - shell: npm install chdir=/home/orcha/proj/aurora
+    - set_fact: git_version={{ latest_code.after }}
+    - set_fact: git_changed={{ latest_code.changed }}
+- hosts: web
+  serial: 1
+  vars_files:
+    - /home/orcha/proj/aurora/devops/secret_vars.yml
+  tasks:
+    - name: Allow HTTP port 8888
+      ufw: rule=allow port=8888 proto=tcp
+    - name: Install NodeJS
+      apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
+    - name: Install NPM
+      apt: name=npm state=present
+    - name: Create symlink to node
+      file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
+    - name: Install git
+      apt: name=git state=present
+    - name: Create Directory for Code
+      sudo: no
+      file: path=/home/orcha/proj/aurora state=directory owner=orcha group=orcha
+    - name: Check out code from github
+      git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
+      # when: hostvars['127.0.0.1'].git_changed
+    - shell: npm install chdir=/home/orcha/proj/aurora
+    - name: Drain Load Balancer Node
+      sudo: no
+      command: node /home/orcha/proj/aurora/devops/drainNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
+      # when: hostvars['127.0.0.1'].git_changed
+    - name: Make docker start executable
+      local_action: file path=/home/orcha/proj/aurora/devops/start.sh state=touch mode="u+rwx" owner="orcha" group="orcha"
+      # when: hostvars['127.0.0.1'].git_changed
+    - shell: ./devops/start.sh chdir=/home/orcha/proj/aurora
+      # when: hostvars['127.0.0.1'].git_changed
+    - shell: npm install chdir=/home/orcha/proj/aurora
+    - name: Enable Load Balancer Node
+      sudo: no
+      command: node /home/orcha/proj/aurora/devops/enableNode.js {{ rs_un }} {{ rs_api_key }} {{ lb_id }} {{ serviceNet }}
+      # when: hostvars['127.0.0.1'].git_changed
