@@ -1,3 +1,3 @@
 module.exports = {
-  apiUrl: 'http://localhost:9091/rest'
+  openFdaFoodApiUrl: 'https://api.fda.gov/food/enforcement.json'
 };

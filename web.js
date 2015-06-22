@@ -48,10 +48,6 @@ app.get('/partials/users', function (req, res) {
   res.render('partials/users/users.jade');
 });
 
-var userProxy = require('./proxy/UserProxy')(app);
-
-userProxy.start();
-
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
