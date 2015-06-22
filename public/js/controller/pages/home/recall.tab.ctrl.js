@@ -1,4 +1,4 @@
-auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams) {
+auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams, recallService) {
   angular.extend(this, $controller('LoadableMixin', {$scope: $scope}));
 
   var _recallStore, _subIds, _expanded, _fetchingNext,
@@ -10,9 +10,9 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
     _scrollDetectorSubIds = [];
     _expanded = [];
     _recallStore = new store.OpenFDACollectionStore({
-      url: 'https://api.fda.gov/food/enforcement.json',
+      url: recallService.URL,
       params: {
-        limit: 50,
+        limit: recallService.LIMIT,
         search: getSearchString()
       }
     });
@@ -44,7 +44,7 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
   };
 
   var getSearchString = function () {
-    return 'distribution_pattern:' + getActiveTab() + '+' + StateHash[getActiveTab()];
+    return recallService.getSearchString(getActiveTab());
   };
 
   var getActiveTab = function () {

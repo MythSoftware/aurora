@@ -94,3 +94,7 @@ body {
   padding-bottom: 20px;
   text-align: center;
 }
+
+.badge {
+  margin-left: 5px;
+}

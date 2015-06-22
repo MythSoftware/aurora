@@ -1,8 +1,11 @@
-auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
-  var _stateTabs, _allStates;
+auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams, recallService) {
+  var _stateTabs, _allStates, _stateCountSubIds;
 
   var init = function () {
     var abbr;
+    $scope.$on("$destroy", destroy);
+    _stateCountSubIds = [];
+    _stateCountSubIds.push(recallService.subscribe(recallService.Event.FETCH_COUNT, handleFetchCount));
     buildAllStates();
     if (!localStorage['stateTabs']) {
       localStorage['stateTabs'] = '{}';
@@ -22,6 +25,26 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
         localStorage['activeTab'] = 'ADD';
       }
     }
+    fetchCounts();
+  };
+
+  var destroy = function () {
+    recallService.unsubscribe(_stateCountSubIds);
+  };
+
+  var fetchCounts = function () {
+    var key, abbrArr;
+    abbrArr = [];
+    for (key in _stateTabs) {
+      abbrArr.push(key);
+    }
+    if (abbrArr.length > 0) {
+      recallService.fetchCounts(abbrArr);
+    }
+  };
+
+  var handleFetchCount = function () {
+    $scope.$apply();
   };
 
   var alphabetizeByState = function (obj) {
@@ -72,6 +95,10 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams) {
     if (localStorage['activeTab'] == abbr) {
       gotoNextTab();
     }
+  };
+
+  $scope.getStateCount = function (stateAbbr) {
+    return recallService.getStateCount(stateAbbr);
   };
 
   var gotoNextTab = function () {
