@@ -1,11 +1,13 @@
 auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams) {
   angular.extend(this, $controller('LoadableMixin', {$scope: $scope}));
 
-  var _recallStore, _subIds, _expanded;
+  var _recallStore, _subIds, _expanded, _fetchingNext,
+    _scrollDetector, _fetchedSome, _scrollDetectorSubIds, _noMore;
 
   $scope.init = function () {
     $scope.$on("$destroy", destroy);
     _subIds = [];
+    _scrollDetectorSubIds = [];
     _expanded = [];
     _recallStore = new store.OpenFDACollectionStore({
       url: 'https://api.fda.gov/food/enforcement.json',
@@ -14,6 +16,8 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
         search: getSearchString()
       }
     });
+    _scrollDetector = new util.ScrollDetector();
+    _scrollDetectorSubIds.push(_scrollDetector.subscribe(util.ScrollEvent.SCROLL_TO_BOTTOM, fetchNext));
     _subIds.push(_recallStore.subscribe(store.Event.FETCH, handleFetch));
     _subIds.push(_recallStore.subscribe(store.Event.ERROR, handleError));
     _recallStore.fetch();
@@ -21,6 +25,8 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
 
   var destroy = function () {
     _recallStore.unsubscribe(_subIds);
+    _scrollDetector.unsubscribe(_scrollDetectorSubIds);
+    _scrollDetector.destroy();
   };
 
   $scope.isExpanded = function (recall) {
@@ -66,14 +72,32 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
     return moment(d, "YYYYMMDD").fromNow();
   };
 
+  $scope.isFetchingNext = function () {
+    return _fetchingNext;
+  };
+
+  $scope.isFetchedSome = function () {
+    return _fetchedSome;
+  };
+
   var handleFetch = function () {
+    _fetchingNext = false;
+    _fetchedSome = true;;
     $scope.setLoading(false);
     $scope.$apply();
   };
 
   var handleError = function () {
-    _recallStore.setCollection([]);
+    _fetchingNext = false;
+    _noMore = true;
     $scope.setLoading(false);
+    $scope.$apply();
+  };
+
+  var fetchNext = function () {
+    if (_fetchingNext || _noMore) return;
+    _fetchingNext = true;
+    _recallStore.fetchNext();
     $scope.$apply();
   };
 

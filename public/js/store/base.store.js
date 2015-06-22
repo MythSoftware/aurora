@@ -16,7 +16,7 @@ store.BaseStore = function (options) {
   if (!options.url) {
     throw 'options.url is required.';
   }
-  angular.extend(this, pubsubable);
+  angular.extend(this, new Pubsubable());
   angular.extend(this, Pubsubable.prototype);
   this.pollInterval_ = options.pollInterval || 5;
   this.url_ = options.url;

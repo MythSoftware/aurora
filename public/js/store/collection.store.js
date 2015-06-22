@@ -17,3 +17,5 @@ store.CollectionStore.prototype.getCollection = function (res) {
 store.CollectionStore.prototype.setCollection = function (collection) {
   this.collection_ = collection;
 };
+
+store.CollectionStore.prototype.fetchNext = function () {};

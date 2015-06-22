@@ -27,5 +27,3 @@ Pubsubable.prototype.publish = function (event, payload) {
     }
   };
 };
-
-var pubsubable = new Pubsubable();
