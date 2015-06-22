@@ -14,8 +14,7 @@ RUN npm install apidoc -g
 
 # Copy files and run
 ADD . /opt/apps/aurora
-COPY . /opt/apps
-RUN cd /opt/apps && npm install
+RUN cd /opt/apps/aurora && npm install
 EXPOSE 8888
 CMD pkill -f web.js
 CMD cd /opt/apps/aurora && ./scripts/generateApiDocs.sh
