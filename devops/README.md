@@ -2,6 +2,10 @@
 
 This document gives a general overview of our DevOps infrastructure and processes.
 
+[Aurora](http://aurora.mythsoftware.com) utilizes [Jenkins](https://jenkins-ci.org/), [Ansible](http://www.ansible.com/home) and [Docker](https://www.docker.com) for configuration management and the ability to quickly ship code with zero down time using a rolling deployment strategy. 
+
+[Jenkins](https://jenkins-ci.org/) kicks off the build. It runs our unit tests and functional tests and ensures they pass. Then it kicks off our Ansible playbook to provision the web servers and deploy the code. This step also decrypts our ansible vault and sets up the production environment with the proper credential variables. Then it triggers the docker container to start.
+
 ##Deploy to Production
 
 Follow the following steps to deploy the latest master code to production:
@@ -46,9 +50,6 @@ The orchestration server is a cloud server for orchestrating integration testing
   * provision the servers
   * copy code to the servers
   * start the [Docker](https://www.docker.com) containers
-* [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) rules
-  * default deny incoming
-  * allow ssh
 
 ### Cloud Load Balancer
 The cloud load balancer distributes network traffic to the web servers.
@@ -59,13 +60,6 @@ The web image is an image we can use to spin up web servers
 
 * OS - Ubuntu 14.04
 * SSH keys are configured to allow SSH access from a designated user from the orchestration server
-* [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) rules
-  * default deny incoming
-  * allow from *the orchestration server* to any port 22
 
 ### Web Server
 The web servers are cloud servers accepting http traffic and serving content or data.
-
-* [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) rules
-  * inherits UFW rules from the Web Server Image
-  * [Ansible](http://www.ansible.com/home) provisions the web servers to open port 8888
