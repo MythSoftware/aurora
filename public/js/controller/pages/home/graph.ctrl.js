@@ -1,6 +1,5 @@
 auroraApp.controller('GraphCtrl', function($scope, recallService) {
 
-<<<<<<< HEAD
   var _recallServiceSubIds;
 
   $scope.init = function () {
@@ -34,10 +33,6 @@ auroraApp.controller('GraphCtrl', function($scope, recallService) {
   var drawGraph = function (data) {
     console.log('drawGraph ' + JSON.stringify(data));
     // draw the graph here
-=======
-  $scope.init = function () {
-
->>>>>>> a86a1d27d175f29750b1052a7bd2fb26d64f96db
   };
 
 });

@@ -40,9 +40,5 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
         span(ng-if="isSearching()", class="input-icon")
           img(src="/images/loading16.gif")
         input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
-<<<<<<< HEAD
         button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default {{isShowingGraph() && 'active' || ''}}")
-=======
-        button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default")
->>>>>>> a86a1d27d175f29750b1052a7bd2fb26d64f96db
           span(class="glyphicon glyphicon-stats")

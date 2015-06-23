@@ -135,7 +135,6 @@ body {
   width: 100%;
   max-height: 0;
   overflow: hidden;
-<<<<<<< HEAD
   -moz-transition: max-height 0.6s ease-in-out;
   -webkit-transition: max-height 0.6s ease-in-out;
   -o-transition: max-height 0.6s ease-in-out;
@@ -148,12 +147,4 @@ body {
 
 #graph {
   height: 300px;
-  -moz-transition: max-height 0.6s ease-in;
-  -webkit-transition: max-height 0.6s ease-in;
-  -o-transition: max-height 0.6s ease-in;
-  transition: max-height 0.6s ease-in;
-}
-
-#graph-container.show {
-  max-height: 800px;
 }
