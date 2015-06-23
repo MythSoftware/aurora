@@ -1,5 +1,21 @@
 auroraApp.controller('CritCtrl', function($scope, recallService) {
 
+  var _searching, _searchThrottle, _recallServiceSubIds;
+
+  _searching = false;
+
+  $scope.init = function () {
+    $scope.$on("$destroy", destroy);
+    $scope.searchQuery = recallService.criteria.searchQuery;
+    _recallServiceSubIds = [];
+    _searchThrottle = new util.Throttle(searchHelper);
+    _recallServiceSubIds.push(recallService.subscribe(recallService.Event.FETCH_COUNT, handleFetchCount));
+  };
+  
+  var destroy = function () {
+    recallService.unsubscribe(_recallServiceSubIds);
+  };
+
   $scope.getCriteria = function () {
     return recallService.criteria;
   };
@@ -12,6 +28,8 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
         return 'Past 6 Months';
       case 'YEAR':
         return 'Past Year';
+      case 'FIVE_YEARS':
+       return 'Past 5 Years';
       default:
         return 'Past Week';
     }
@@ -36,6 +54,24 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
 
   $scope.selectClassification = function (classification) {
     recallService.updateCriteria('classification', classification);
+  };
+
+  $scope.isSearching = function () {
+    return _searching;
+  };
+
+  $scope.search = function () {
+    _searching = true;
+    _searchThrottle.execute();
+  };
+
+  var searchHelper = function () {
+    recallService.updateCriteria('searchQuery', $scope.searchQuery);
+  };
+
+  var handleFetchCount = function () {
+    _searching = false;
+    $scope.$apply();
   };
 
 });

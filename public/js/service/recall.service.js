@@ -50,7 +50,11 @@ auroraApp.factory('recallService', function () {
     var str, millisToSubtract, from, fromStr, now, classText;
 
     millisToSubtract = getNumberOfWeeks() * ONE_WEEK;
-    str = 'distribution_pattern:' + stateAbbr + '+' + StateHash[stateAbbr];
+    str = '';
+    if (service.criteria.searchQuery) {
+      str += 'product_description:' + service.criteria.searchQuery.replace(new RegExp(' ', 'g'), '+') + '+AND+';
+    }
+    str += '(distribution_pattern:' + stateAbbr + '+' + StateHash[stateAbbr] + ')';
     now = Date.now();
     from = now - millisToSubtract;
     fromStr = moment(from).format('YYYYMMDD');
@@ -88,6 +92,8 @@ auroraApp.factory('recallService', function () {
         return 26;
       case 'YEAR':
         return 52;
+      case 'FIVE_YEARS':
+        return 260;
       default:
         return 1;
     }
