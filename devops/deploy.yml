@@ -40,6 +40,8 @@
     - name: Check out code from github
       git: repo=https://github.com/MythSoftware/aurora.git dest=/home/orcha/proj/aurora accept_hostkey=yes
       # when: hostvars['127.0.0.1'].git_changed
+    - name: Copy the secretProperties file
+      template: src=/home/orcha/proj/aurora/devops/secretProperties.j2 dest=/home/orcha/proj/secretProperties.js owner=orcha group=orcha
     - shell: npm install chdir=/home/orcha/proj/aurora
     - name: Drain Load Balancer Node
       sudo: no

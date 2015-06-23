@@ -1,5 +1,12 @@
 var express = require('express');
 var url = require('url');
+var secretProperties;
+
+try {
+  secretProperties = require('./secretProperties.js');
+} catch (e) {
+  secretProperties = {};
+}
 
 var app;
 
