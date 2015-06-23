@@ -148,7 +148,6 @@ body {
 
 #graph {
   height: 300px;
-=======
   -moz-transition: max-height 0.6s ease-in;
   -webkit-transition: max-height 0.6s ease-in;
   -o-transition: max-height 0.6s ease-in;
@@ -157,5 +156,4 @@ body {
 
 #graph-container.show {
   max-height: 800px;
->>>>>>> a86a1d27d175f29750b1052a7bd2fb26d64f96db
 }
