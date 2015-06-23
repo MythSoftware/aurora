@@ -65,6 +65,11 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
     _searchThrottle.execute();
   };
 
+  $scope.toggleGraph = function () {
+    $('#graph-container').addClass('show');
+    $('#show-graph-button').addClass('active');
+  };
+
   var searchHelper = function () {
     recallService.updateCriteria('searchQuery', $scope.searchQuery);
   };
