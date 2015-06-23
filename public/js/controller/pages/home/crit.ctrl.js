@@ -17,8 +17,25 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
     }
   };
 
+  $scope.getClassificationLabel = function (classification) {
+    switch (classification) {
+      case 'ALL':
+        return 'All Classifications';
+      case 'CLASS_I':
+        return 'Class I';
+      case 'CLASS_II':
+        return 'Class II';
+      default:
+        return 'CLASS III';
+    }
+  };
+
   $scope.selectWhen = function (when) {
     recallService.updateCriteria('when', when);
+  };
+
+  $scope.selectClassification = function (classification) {
+    recallService.updateCriteria('classification', classification);
   };
 
 });

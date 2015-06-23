@@ -18,6 +18,7 @@ auroraApp.factory('recallService', function () {
 
   service.criteria = {
     when: 'YEAR',
+    classification: 'ALL',
     search: ''
   };
 
@@ -46,7 +47,7 @@ auroraApp.factory('recallService', function () {
   };
 
   service.getSearchString = function (stateAbbr) {
-    var str, millisToSubtract, from, fromStr, now;
+    var str, millisToSubtract, from, fromStr, now, classText;
 
     millisToSubtract = getNumberOfWeeks() * ONE_WEEK;
     str = 'distribution_pattern:' + stateAbbr + '+' + StateHash[stateAbbr];
@@ -55,11 +56,28 @@ auroraApp.factory('recallService', function () {
     fromStr = moment(from).format('YYYYMMDD');
     toStr = moment(now).format('YYYYMMDD');
     str += '+AND+recall_initiation_date:[' + fromStr + '+TO+' + toStr +']';
+    classText = getClassificationText();
+    if (classText) {
+      str += '+AND+classification:' + classText;
+    }
     return str;
   };
 
   service.getStateCount = function (stateAbbr) {
     return _countMap[stateAbbr];
+  };
+
+  var getClassificationText = function () {
+    switch (service.criteria.classification) {
+      case 'CLASS_I':
+        return '"Class+I"';
+      case 'CLASS_II':
+        return '"Class+II"';
+      case 'CLASS_III':
+        return '"Class+III"';
+      default:
+        return null;
+    }
   };
 
   var getNumberOfWeeks = function () {
