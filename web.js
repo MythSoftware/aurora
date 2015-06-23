@@ -1,5 +1,7 @@
 var express = require('express');
 var url = require('url');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport();
 
 var app;
 
@@ -24,6 +26,20 @@ var renderIndex = function (req, res) {
   res.render('index', pageData);
 };
 
+var sendMail = function(req, res){
+    var data = req.body;
+
+    transporter.sendMail({
+        from: data.email,
+        to: 'aurora-dev@mythsoftware.com',
+        subject: 'Feedback from Aurora',
+        text: data.message
+    }
+
+    );
+    res.json(data);
+};
+
 app.get('/about', function (req, res) {
   renderIndex(req, res);
 });
@@ -35,6 +51,10 @@ app.get('/users', function (req, res) {
 app.get('/contact', function (req, res) {
 	  renderIndex(req, res);
 	});
+app.post('/contact', function (req, res){
+    sendMail(req, res);
+
+});
 
 app.get('/:state?', function (req, res) {
   renderIndex(req, res);
