@@ -36,7 +36,7 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
             a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
       div(class="navbar-form navbar-right")
         li
-          div(class="form-group")
+          div(class="form-group col-sm-12")
             span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
             span(ng-if="isSearching()", class="input-icon")
               img(src="/images/loading16.gif")
