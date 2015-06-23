@@ -113,3 +113,16 @@ body {
 .crit-navbar .navbar-nav ul li a {
   cursor: pointer;
 }
+
+.input-icon {
+  margin-right: -24px;
+  opacity: 0.5;
+}
+
+.input-with-icon {
+  padding-left: 28px;
+}
+
+.search-input {
+  margin-right: 8px;
+}

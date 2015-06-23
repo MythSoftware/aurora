@@ -1,4 +1,4 @@
-nav(ng-controller="CritCtrl as critCtrl", class="crit-navbar navbar-form navbar-default")
+nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar navbar-form navbar-default")
   div(class="container-fluid")
   div(class="navbar-header")
     button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#crit-navbar", aria-expanded="false")
@@ -20,6 +20,8 @@ nav(ng-controller="CritCtrl as critCtrl", class="crit-navbar navbar-form navbar-
             a(ng-click="selectWhen('SIX_MONTHS')") {{getWhenLabel('SIX_MONTHS')}}
           li
             a(ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
+          li
+            a(ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
       li(class="dropdown")
         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getClassificationLabel(getCriteria().classification)}}
           span(class="caret")
@@ -32,3 +34,10 @@ nav(ng-controller="CritCtrl as critCtrl", class="crit-navbar navbar-form navbar-
             a(ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
           li
             a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
+      div(class="navbar-form navbar-right")
+        li
+          div(class="form-group")
+            span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
+            span(ng-if="isSearching()", class="input-icon")
+              img(src="/images/loading16.gif")
+            input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
