@@ -1,4 +1,5 @@
 auroraApp.controller('ContactCtrl', function($scope,$http ,$controller) {
+  angular.extend(this, $controller('FeatureMixin', {$scope: $scope}));
 
   $scope.result="";
   $scope.sendMail = function(){
