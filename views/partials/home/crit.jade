@@ -35,9 +35,10 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
           li
             a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
       div(class="navbar-form navbar-right")
-        li
-          div(class="form-group")
-            span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
-            span(ng-if="isSearching()", class="input-icon")
-              img(src="/images/loading16.gif")
-            input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
+       div(class="search-form-group form-group")
+        span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
+        span(ng-if="isSearching()", class="input-icon")
+          img(src="/images/loading16.gif")
+        input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
+        button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default {{isShowingGraph() && 'active' || ''}}")
+          span(class="glyphicon glyphicon-stats")

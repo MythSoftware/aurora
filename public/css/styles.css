@@ -126,3 +126,25 @@ body {
 .search-input {
   margin-right: 8px;
 }
+
+.search-form-group {
+  padding-right: 10px;
+}
+
+#graph-container {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  -moz-transition: max-height 0.6s ease-in-out;
+  -webkit-transition: max-height 0.6s ease-in-out;
+  -o-transition: max-height 0.6s ease-in-out;
+  transition: max-height 0.6s ease-in-out;
+}
+
+#graph-container.show {
+  max-height: 300px;
+}
+
+#graph {
+  height: 300px;
+}
