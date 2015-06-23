@@ -64,7 +64,6 @@ auroraApp.factory('recallService', function () {
     if (classText) {
       str += '+AND+classification:' + classText;
     }
-    console.log('str ' + str);
     return str;
   };
 
