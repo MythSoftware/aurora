@@ -2,14 +2,17 @@ auroraApp.factory('featureService', function () {
 
   // quick and dirty
   // "_features" needs to a database
-  var _features = {
+  var _features = ({
     alerts: function () {
       return false;
     },
     feedback: function () {
       return false;
+    },
+    contacts: function(){
+      return false;
     }
-  };
+  });
 
   var service = {};
 
