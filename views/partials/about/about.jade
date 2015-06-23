@@ -1,10 +1,11 @@
 extends ../../templates/loading.content.jade
 block content
-  div(class="jumbotron")
-    h2 About
-    p {{aboutmessage}} 
-    br
-    h3 Who are we?
-    p {{aboutus}}
-    p
-      a(class="btn btn-lg btn-primary pull-right", href="/", role="button") Return Home &raquo;
+  div.container
+    div(class="jumbotron")
+      h2 About
+      p {{aboutmessage}}
+      br
+      h3 Who are we?
+      p {{aboutus}}
+      p
+        a(class="btn btn-lg btn-primary pull-right", href="/", role="button") Return Home &raquo;

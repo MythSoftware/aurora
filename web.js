@@ -1,7 +1,14 @@
 var express = require('express');
 var url = require('url');
 var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport();
+var transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'mythmailrelay@gmail.com',
+    pass: 'mailrelay'
+}
+
+});
 
 var app;
 
@@ -27,16 +34,13 @@ var renderIndex = function (req, res) {
 };
 
 var sendMail = function(req, res){
-    var data = req.body;
-
+  var data = req.body;
     transporter.sendMail({
-        from: data.email,
-        to: 'aurora-dev@mythsoftware.com',
-        subject: 'Feedback from Aurora',
-        text: data.message
-    }
-
-    );
+      from: data.email,
+      to: 'mythmailrelay@gmail.com',
+      subject: 'Feedback from Aurora',
+      text: data.email + ' says: ' + data.message
+    });
     res.json(data);
 };
 
@@ -51,7 +55,7 @@ app.get('/users', function (req, res) {
 app.get('/contact', function (req, res) {
 	  renderIndex(req, res);
 	});
-app.post('/contact', function (req, res){
+app.post('/api/contactmessages', function (req, res){
     sendMail(req, res);
 
 });
