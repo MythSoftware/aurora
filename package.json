@@ -16,5 +16,8 @@
     "title": "Aurora API",
     "description": "Public API for Aurora",
     "url": "http://localhost:9091/rest"
+  },
+  "devDependencies": {
+    "gulp-nightwatch": "^0.1.3"
   }
 }
