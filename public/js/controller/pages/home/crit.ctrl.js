@@ -66,8 +66,11 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
   };
 
   $scope.toggleGraph = function () {
-    $('#graph-container').addClass('show');
-    $('#show-graph-button').addClass('active');
+    recallService.toggleGraph();
+  };
+
+  $scope.isShowingGraph = function () {
+    return recallService.isShowingGraph();
   };
 
   var searchHelper = function () {
