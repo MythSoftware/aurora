@@ -18,5 +18,6 @@ ADD . /opt/apps/aurora
 RUN cd /opt/apps/aurora && npm install
 EXPOSE 8888
 CMD pkill -f web.js
-CMD cd /opt/apps/aurora && ./scripts/generateApiDocs.sh
-CMD cd /opt/apps/aurora && forever web.js
+WORKDIR /opt/apps/aurora
+CMD ./scripts/generateApiDocs.sh
+CMD forever web.js

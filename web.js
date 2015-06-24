@@ -1,21 +1,5 @@
 var express = require('express');
 var url = require('url');
-var secretProperties;
-
-try {
-  secretProperties = require('./secretProperties.js');
-} catch (e) {
-  secretProperties = {};
-}
-var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: 'mythmailrelay@gmail.com',
-    pass: 'mailrelay'
-}
-
-});
 
 var app;
 
@@ -40,17 +24,6 @@ var renderIndex = function (req, res) {
   res.render('index', pageData);
 };
 
-var sendMail = function(req, res){
-  var data = req.body;
-    transporter.sendMail({
-      from: data.email,
-      to: 'mythmailrelay@gmail.com',
-      subject: 'Feedback from Aurora',
-      text: data.email + ' says: ' + data.message
-    });
-    res.json(data);
-};
-
 app.get('/about', function (req, res) {
   renderIndex(req, res);
 });
@@ -60,11 +33,7 @@ app.get('/users', function (req, res) {
 });
 
 app.get('/contact', function (req, res) {
-	  renderIndex(req, res);
-	});
-app.post('/api/contactmessages', function (req, res){
-    sendMail(req, res);
-
+  renderIndex(req, res);
 });
 
 app.get('/:state?', function (req, res) {
@@ -84,9 +53,12 @@ app.get('/partials/users', function (req, res) {
 });
 
 app.get('/partials/contact', function (req, res) {
-	  res.render('partials/contact/contact.jade');
-	});
+  res.render('partials/contact/contact.jade');
+});
 
+var contactMessagesApi = require('./api/ContactMessagesApi.js')(app);
+
+contactMessagesApi.start();
 
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

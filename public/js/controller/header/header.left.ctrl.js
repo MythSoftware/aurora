@@ -1,5 +1,6 @@
-auroraApp.controller('HeaderLeftCtrl', function($scope, $location, $routeParams) {
-  
+auroraApp.controller('HeaderLeftCtrl', function($scope, $controller, $location, $routeParams) {
+  angular.extend(this, $controller('FeatureMixin', {$scope: $scope}));
+
   $scope.getCurrentPath = function () {
     return $location.path();
   };
