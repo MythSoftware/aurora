@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .hcenter {
@@ -147,4 +147,19 @@ body {
 
 #graph {
   height: 300px;
+}
+
+.filterTitle { display: none;}
+
+@media only screen and (max-width: 768px) {
+    .input-icon {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+    }
+    .filterTitle {
+        display: block;
+        padding: 5px 0 5px 15px;
+        color: #777;
+    }
 }
