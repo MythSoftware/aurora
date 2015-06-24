@@ -117,9 +117,6 @@ body {
 .input-icon {
   margin-right: -24px;
   opacity: 0.5;
-  position: absolute;
-  top: 10px;
-  left: 25px;
 }
 
 .input-with-icon {
@@ -128,4 +125,19 @@ body {
 
 .search-input {
   margin-right: 8px;
+}
+
+.filterTitle { display: none;}
+
+@media only screen and (max-width: 768px) {
+    .input-icon {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+    }
+    .filterTitle {
+        display: block;
+        padding: 5px 0 5px 15px;
+        color: #777;
+    }
 }
