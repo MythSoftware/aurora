@@ -8,7 +8,7 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
       span(class="icon-bar")
   div#crit-navbar(class="collapse navbar-collapse")
     ul(class="nav navbar-nav")
-      li(class="dropdown")
+      li(class="dropdown date-ranges")
         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}
           span(class="caret")
         ul(class="dropdown-menu")
@@ -22,7 +22,7 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
             a(ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
           li
             a(ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
-      li(class="dropdown")
+      li(class="dropdown all-clazz")
         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getClassificationLabel(getCriteria().classification)}}
           span(class="caret")
         ul(class="dropdown-menu")
