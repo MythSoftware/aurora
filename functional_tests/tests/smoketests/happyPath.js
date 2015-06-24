@@ -4,7 +4,7 @@ var expect = chai.expect;
 module.exports = {
     'Verify Aurora is up and Live' : function (browser) {
         browser
-            .url('http://localhost:8888/')
+            .url('aurora.mythsoftware.com/')
             .waitForElementVisible("#crit-navbar", 1000)
             .assert.title('Aurora')
             .assert.containsText('body', 'Track food threats near you')
