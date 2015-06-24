@@ -10,7 +10,7 @@ auroraApp.factory('featureService', function () {
       return false;
     },
     contacts: function(){
-      return false;
+      return true;
     }
   });
 
