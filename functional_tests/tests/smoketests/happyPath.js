@@ -7,8 +7,14 @@ module.exports = {
             .assert.containsText('body', 'Track food threats near you')
             .pause(1000)
             .assert.containsText("button[data-toggle=\"dropdown\"] ", "Select State")
+            .click('button.dropdown-toggle')
+            .pause(1000)
+            .keys(['\uE004','\uE004', '\uE006']) //tab tab enter
+            .pause(1000)
             .click("#crit-navbar .dropdown-toggle")
             .pause(1000)
+
+            //\ue004'
             //.assert.containsText("button[data-toggle=\"dropdown\"] ", "Select State")
             .end();
     }
