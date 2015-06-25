@@ -17,5 +17,8 @@
     "title": "Aurora API",
     "description": "Public API for Aurora",
     "url": "http://www.aurora.MythSoftware.com"
+  },
+  "devDependencies": {
+    "gulp-nightwatch": "^0.1.3"
   }
 }

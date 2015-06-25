@@ -8,8 +8,8 @@ block content
         role="presentation",
         class="{{isActive(abbr) && 'active' || ''}}")
         a(href="/{{abbr}}")
-          span {{getStateName(abbr)}}
-          span(class="badge") {{getStateCount(abbr)}}
+          span(class="stateDropdown") {{getStateName(abbr)}}
+          span(class="badge recallCount") {{getStateCount(abbr)}}
           small
             span(ng-click="closeTab(abbr, $event)", class="active-hover glyphicon glyphicon-remove")
       li(role="presentation", class="{{isAdding() && 'active' || ''}}")
