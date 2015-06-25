@@ -40,6 +40,6 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
         span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
         span(ng-if="isSearching()", class="input-icon")
           img(src="/images/loading16.gif")
-        input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search Recalls")
+        input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
         button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default {{isShowingGraph() && 'active' || ''}}")
           span(class="glyphicon glyphicon-stats")
