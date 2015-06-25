@@ -1,5 +1,8 @@
 extends ./layouts/main.layout.jade
 block header
   include ./header/header.jade
+
 block main
   div(ng-view)
+  div.to-top
+    a.btn.btn-primary.glyphicon.glyphicon-arrow-up

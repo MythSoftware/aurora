@@ -1,1 +1,1 @@
-apidoc -i proxy/ -o public/apidoc/
+apidoc -i api/ -o public/apidoc/

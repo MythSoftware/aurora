@@ -6,3 +6,5 @@ node_modules
 nohup.out
 npm-debug.log
 public/apidoc
+secretProperties.js
+*.DS_Store

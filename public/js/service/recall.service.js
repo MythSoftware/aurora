@@ -1,5 +1,7 @@
 auroraApp.factory('recallService', function () {
 
+  var _showGraph = false;
+
   var service = {};
   angular.extend(service, new Pubsubable());
   angular.extend(service, Pubsubable.prototype);
@@ -13,7 +15,8 @@ auroraApp.factory('recallService', function () {
   service.Event = {
     FETCH_COUNT:'FETCH_COUNT',
     FETCH_COUNT_ERROR:'FETCH_COUNT_ERROR',
-    UPDATE_CRIT:'UPDATE_CRIT'
+    UPDATE_CRIT:'UPDATE_CRIT',
+    SHOW_GRAPH:'SHOW_GRAPH'
   };
 
   service.criteria = {
@@ -69,6 +72,17 @@ auroraApp.factory('recallService', function () {
 
   service.getStateCount = function (stateAbbr) {
     return _countMap[stateAbbr];
+  };
+
+  service.isShowingGraph = function () {
+    return _showGraph;
+  };
+
+  service.toggleGraph = function () {
+    _showGraph = !_showGraph;
+    if (_showGraph) {
+      service.publish(service.Event.SHOW_GRAPH);
+    }
   };
 
   var getClassificationText = function () {

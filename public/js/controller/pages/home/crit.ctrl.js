@@ -44,7 +44,7 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
       case 'CLASS_II':
         return 'Class II';
       default:
-        return 'CLASS III';
+        return 'Class III';
     }
   };
 
@@ -63,6 +63,14 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
   $scope.search = function () {
     _searching = true;
     _searchThrottle.execute();
+  };
+
+  $scope.toggleGraph = function () {
+    recallService.toggleGraph();
+  };
+
+  $scope.isShowingGraph = function () {
+    return recallService.isShowingGraph();
   };
 
   var searchHelper = function () {
