@@ -8,14 +8,19 @@ function drawUSMap() {
 
     var i = 1;
 
-    dataArray[0] = ['State', 'Total', 'Class 1', 'Class 2', 'Class 3'];
+    dataArray[0] = ['State', 'Recalls'];
 
     for(state in StateHash) {
-        var class1 = Math.floor(Math.random() * 1000);
-        var class2 = Math.floor(Math.random() * 1000);
-        var class3 = Math.floor(Math.random() * 1000);
 
-        dataArray[i] = [StateHash[state], class1 + class2 + class3, class1, class2, class3];
+        if(state.length != 2) {
+            break;
+        }
+
+        var total = Math.floor(Math.random() * 1000);
+        //var class2 = Math.floor(Math.random() * 1000);
+        //var class3 = Math.floor(Math.random() * 1000);
+
+        dataArray[i] = [StateHash[state], total];
 
         //dataArray[i].name = StateHash[state];
         //dataArray[i].total = class1 + class2 + class3;
@@ -25,6 +30,11 @@ function drawUSMap() {
 
         i++
     }
+
+    var data2 = google.visualization.arrayToDataTable([
+        ['State',   'Class 1', 'Class 2'],
+        ['Virginia', 36, 243], ['US-MD', 245, 25], ['US-WV', 6, 12], ['US-NC', 124, 54], ['US-CA', 0, 500]
+    ]);
 
     var data = google.visualization.arrayToDataTable(dataArray);
 
@@ -36,6 +46,7 @@ function drawUSMap() {
         resolution: "provinces",
         defaultColor: '#f5f5f5',
         enableRegionInteractivity: 'true',
+        legend: 'none',
         //width: 600,
     };
 
@@ -43,6 +54,10 @@ function drawUSMap() {
     var chart = new google.visualization.GeoChart(document.getElementById('usmap'));
 
     google.visualization.events.addListener(chart, 'regionClick', clickHandler);
+
+    window.addEventListener("resize", function() {
+        chart.draw(data, options);
+    });
 
     chart.draw(data, options);
 };
