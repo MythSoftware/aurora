@@ -47,6 +47,10 @@ app.get('/:state?', function (req, res) {
   renderIndex(req, res);
 });
 
+app.get('/landing', function (req, res) {
+  renderIndex(req, res);
+});
+
 app.get('/partials/home', function (req, res) {
   res.render('partials/home/home.jade');
 });
@@ -63,6 +67,9 @@ app.get('/partials/contact', function (req, res) {
 	  res.render('partials/contact/contact.jade');
 	});
 
+app.get('/partials/home/landing', function (req, res) {
+  res.render('partials/home/landing.jade');
+});
 
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
