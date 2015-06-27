@@ -31,23 +31,16 @@ auroraApp.controller('GraphCtrl', function($scope, recallService) {
   };
 
   var drawGraph = function (data) {
-    console.log('drawGraph ' + JSON.stringify(data));
-    // draw the graph here
+    $('#graph').html('');
       var state;
       var getState = [];
       var getCount = [];
       for (state in data) {
-          //console.log('state = ' + state);
-          //console.log('count = ' + data[state]);
           getState.push(state);
-          console.log(getState)
-
           getCount.push(data[state])
-          console.log(getCount)
 
       }
       var colors = ['#0000b4','#0082ca','#0094ff','#0d4bcf','#0066AE','#074285','#00187B','#285964','#405F83','#416545','#4D7069','#6E9985','#7EBC89','#0283AF','#79BCBF','#99C19E'];
-
       var grid = d3.range(50).map(function(i){
           return {'x1':0,'y1':0,'x2':0,'y2':480};
       });
@@ -58,7 +51,14 @@ auroraApp.controller('GraphCtrl', function($scope, recallService) {
       });
 
       var width = $('#graph-container').width(),
-          height = $('#graph').height();
+          height = getState.length * 30;
+      
+      if (height < 150) {
+        height = 150;
+      }
+
+      $('#graph-container').css('max-height', '' + (height + 50) + 'px');
+      $('#graph').css('height', '' + height + 'px');
 
       var margin = {top: 0, right:50, bottom:20, left:10};
 
