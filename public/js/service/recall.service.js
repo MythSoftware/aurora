@@ -83,6 +83,9 @@ auroraApp.factory('recallService', function () {
     if (_showGraph) {
       service.publish(service.Event.SHOW_GRAPH);
     }
+    else {
+      $('#graph-container').css('max-height', 0);
+    }
   };
 
   var getClassificationText = function () {

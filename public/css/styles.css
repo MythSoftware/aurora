@@ -139,9 +139,7 @@ body {
   display: none;
 }
 
-
-
-
+/* begining of graph styles */
 #graph-container {
   width: 100%;
   max-height: 0;
@@ -152,13 +150,19 @@ body {
   transition: max-height 0.6s ease-in-out;
 }
 
-#graph-container.show {
-  max-height: 300px;
+#graph {
+  height: 150px;
 }
 
-#graph {
-  height: 300px;
+#xaxis .domain {
+    fill:none;
+    stroke:#eee;
 }
+#xaxis text, #yaxis text {
+    font-size: 10px;
+}
+#yaxis { padding-top: 10px;}
+/* end of graph styles */
 
 .filterTitle { display: none;}
 
