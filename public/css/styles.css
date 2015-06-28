@@ -139,8 +139,14 @@ body {
   display: none;
 }
 
-
-
+.gray-background {
+  background-color: #C4C4C6;
+}
+.map-buttons {
+  background-color: Transparent;
+  border: none;
+  outline:none;
+}
 
 #graph-container {
   width: 100%;
