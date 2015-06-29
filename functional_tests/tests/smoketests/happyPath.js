@@ -15,7 +15,7 @@ module.exports = {
 
     'Select the month and verify' : function (browser) {
         browser
-            .click(".date-ranges .dropdown-menu .ng-binding[ng-click=\"selectWhen(\'MONTH\')\"]")
+            .click(".date-ranges .dropdown-menu .ng-binding[ng-click=\"selectWhen(\'SIX_MONTHS\')\"]")
             .waitForElementVisible("button[data-toggle=\"dropdown\"] ", 1500)
     },
     'Select State dropdown' : function (browser) {
@@ -31,6 +31,32 @@ module.exports = {
             .click("ul.dropdown-menu .ng-scope a[href=\"/VA\"]")
             .waitForElementVisible("ul.nav.nav-tabs a[href=\"/VA\"] span.stateDropdown", 3000)
             .assert.containsText("ul.nav.nav-tabs a[href=\"/VA\"] span.stateDropdown", "Virginia")
-            .end();
+            .waitForElementVisible("span.badge", 1000)
+
+    },
+    'Get all elements' : function(browser) {
+        browser
+            .elements('css selector', 'div.text p', function (result) {
+                for (var i in result.value) {
+                    this.elementIdAttribute(result.value[i].ELEMENT, 'id', function (result) {
+                        console.log(result.value);
+                    });
+                }
+            })
+    },
+
+    'Checking recalls': function (browser) {
+
+        browser.getText("span.badge", function(result) {
+            //console.log( '>>>>>>>>>', result.value );
+            //this is how you get the value of an element
+            if (result.value > 0)
+            browser
+                 .waitForElementVisible("li.recall-li", 1000)
+                 .end();
+            else
+            browser
+                .end();
+            })
     }
 };
