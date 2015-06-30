@@ -13,9 +13,15 @@ auroraApp.config(['$locationProvider', '$routeProvider',
         controller: 'UsersCtrl'
       }).
       when('/contact', {
-        templateUrl: 'partials/contact',
-        controller: 'ContactCtrl'
-      }).        
+          templateUrl: 'partials/contact',
+          controller: 'ContactCtrl'
+        }).
+
+      when('/landing', {
+          templateUrl: 'partials/landing/landing',
+          controller: 'LandingCtrl'
+        }).
+
       when('/:state?', {
         templateUrl: 'partials/home',
         controller: 'HomeCtrl'

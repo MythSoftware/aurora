@@ -40,6 +40,10 @@ app.get('/:state?', function (req, res) {
   renderIndex(req, res);
 });
 
+app.get('/landing', function (req, res) {
+  renderIndex(req, res);
+});
+
 app.get('/partials/home', function (req, res) {
   res.render('partials/home/home.jade');
 });
@@ -54,6 +58,10 @@ app.get('/partials/users', function (req, res) {
 
 app.get('/partials/contact', function (req, res) {
   res.render('partials/contact/contact.jade');
+});
+
+app.get('/partials/landing/landing', function (req, res) {
+  res.render('partials/landing/landing.jade');
 });
 
 var contactMessagesApi = require('./api/ContactMessagesApi.js')(app);
