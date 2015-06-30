@@ -53,10 +53,14 @@ module.exports = {
             if (result.value > 0)
             browser
                  .waitForElementVisible("li.recall-li", 1000)
-                 .end();
+
             else
             browser
-                .end();
             })
+    },
+    'Checking remove button': function (browser){
+        browser
+            .click("span.glyphicon.glyphicon-remove")
+            .waitForElementVisible("li.recall-li", 1000)
     }
 };
