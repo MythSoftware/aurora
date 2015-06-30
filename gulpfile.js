@@ -3,6 +3,7 @@ var browserSync = require('browser-sync');
 var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
 var nightwatch = require('gulp-nightwatch');
+var karma = require('karma').server;
 
 gulp.task('serve:test', function (done) {
     browserSync({
@@ -56,4 +57,10 @@ gulp.task('default', function() {
         }));
 });
 
+gulp.task('unit_test', function (done) {
+    karma.start({
+        configFile: 'karma.conf.js',
+        singleRun: true
+    }, done);
+});
 
