@@ -17,12 +17,12 @@ auroraApp.config(['$locationProvider', '$routeProvider',
           controller: 'ContactCtrl'
         }).
 
-      when('/landing', {
+      when('/', {
           templateUrl: 'partials/landing/landing',
           controller: 'LandingCtrl'
         }).
 
-      when('/:state?', {
+      when('/recalls/:state?', {
         templateUrl: 'partials/home',
         controller: 'HomeCtrl'
       }).

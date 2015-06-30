@@ -8,4 +8,4 @@ div(class="tab-panel panel panel-default")
         span(class="caret")
       ul(class="clipped-dropdown dropdown-menu", aria-labelledby="dropdownMenu1")
         li(ng-repeat="abbr in getAllStates()")
-          a(href="/{{abbr}}") {{getStateName(abbr)}}
+          a(href="/recalls/{{abbr}}") {{getStateName(abbr)}}

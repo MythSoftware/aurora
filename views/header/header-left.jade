@@ -1,6 +1,6 @@
 ul(ng-controller="HeaderLeftCtrl as headerLeftCtrl", class="nav navbar-nav navbar-right")
   li(class="{{isHome() && 'active' || 'data-test-display-name'}}", data-test-display-name="Recalls")
-    a(href="/") Food Recalls
+    a(href="/recalls") Food Recalls
   li(class="{{getCurrentPath() == '/about' && 'active' || ''}}",data-test-display-name="About")
     a(href="/about") About
   li(ng-if="hasFeature('contacts')", class="{{getCurrentPath() == '/contact' && 'active' || ''}}" )
