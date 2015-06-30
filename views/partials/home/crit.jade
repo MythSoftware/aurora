@@ -1,15 +1,15 @@
-nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar navbar-form navbar-default")
+nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar")
   div(class="container-fluid")
-  div(class="navbar-header")
+  //div(class="navbar-header")
     h5(class ="filterTitle pull-left") Filter
     button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#crit-navbar", aria-expanded="false")
       span(class="sr-only") Toggle navigation
       span(class="icon-bar")
       span(class="icon-bar")
       span(class="icon-bar")
-  div#crit-navbar(class="collapse navbar-collapse")
+  div#crit-navbar(class="navbar navbar-default hidden-xs")
     ul(class="nav navbar-nav")
-      li(class="dropdown date-ranges")
+      li(class="dropdown")
         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}
           span(class="caret")
         ul(class="dropdown-menu")
@@ -23,7 +23,7 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
             a(ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
           li
             a(ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
-      li(class="dropdown all-clazz")
+      li(class="dropdown")
         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getClassificationLabel(getCriteria().classification)}}
           span(class="caret")
         ul(class="dropdown-menu")
@@ -43,3 +43,55 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar n
         input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
         button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default {{isShowingGraph() && 'active' || ''}}")
           span(class="glyphicon glyphicon-stats")
+
+  div#crit-navbar-hidden(class="crit-navbar navmenu navmenu-default navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
+    div(class="navbar navbar-default")
+      h5(class="navmenu-brand") Filter
+      ul(class="nav navbar-nav")
+        li(class="dropdown")
+          a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}
+            span(class="caret")
+          ul(class="dropdown-menu")
+            li
+              a(ng-click="selectWhen('WEEK')") {{getWhenLabel('WEEK')}}
+            li
+              a(ng-click="selectWhen('MONTH')") {{getWhenLabel('MONTH')}}
+            li
+              a(ng-click="selectWhen('SIX_MONTHS')") {{getWhenLabel('SIX_MONTHS')}}
+            li
+              a(ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
+            li
+              a(ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
+        li(class="dropdown")
+          a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getClassificationLabel(getCriteria().classification)}}
+            span(class="caret")
+          ul(class="dropdown-menu")
+            li
+              a(ng-click="selectClassification('ALL')") {{getClassificationLabel('ALL')}}
+            li
+              a(ng-click="selectClassification('CLASS_I')") {{getClassificationLabel('CLASS_I')}}
+            li
+              a(ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
+            li
+              a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
+        div(class="row-fluid")
+          div(class="search-form-group form-group")
+            div(class="col-xs-10")
+              span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
+              span(ng-if="isSearching()", class="input-icon")
+                img(src="/images/loading16.gif")
+              input(type="text", ng-change="search()", ng-model="searchQuery", class="search-input input-with-icon form-control", placeholder="Search")
+            div(class="col-xs-2")
+              button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default {{isShowingGraph() && 'active' || ''}}")
+                span(class="glyphicon glyphicon-stats")
+div(class="canvas")
+  div(class="hidden-sm hidden-md hidden-lg")
+    //button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#crit-navbar", aria-expanded="false")
+      span(class="sr-only") Toggle navigation
+      span(class="icon-bar")
+      span(class="icon-bar")
+      span(class="icon-bar")
+    button(type="button", class="btn btn-default btn-filter", data-toggle="offcanvas", data-target="#crit-navbar-hidden", data-canvas="body", aria-expanded="false")
+      span(class="glyphicon glyphicon-filter", aria-hidden="true")
+
+
