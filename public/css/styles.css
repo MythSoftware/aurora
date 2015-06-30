@@ -300,6 +300,10 @@ input.search-query {
 
 .filterTitle { display: none;}
 
+.btn-filter { position: fixed; top: 8px; right:60px; z-index: 1030;}
+
+#crit-navbar-hidden { z-index: 1035;}
+
 @media only screen and (max-width: 768px) {
   .input-icon {
     position: absolute;
