@@ -2,27 +2,28 @@ body {
   padding-top: 50px;
 }
 
-
 .pad-top-15{
   padding-top: 15px;
   outline:none;
 }
+
 .navbar-default {
   background-color: white;
-
 }
+
 .navbar-default .navbar-brand {
   color: white;
   background-color:#ab0115;
 }
+
 .off-gray-nav{
   background-color: #eaeaea;
 
 }
+
 .navbar .navbar-header > a:hover,.navbar .navbar-header > a:focus {
   background-color: #ab0115;
   color:white;
-
 }
 
 .navbar-default .navbar-text {
@@ -32,27 +33,34 @@ body {
 .navbar-default .navbar-nav > li > a {
   color: #656565;
 }
+
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #656565;
   background-color: #fdfa00;
 }
+
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #656565;
   background-color: #fdfa00;
 }
+
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   color: #656565;
   background-color: #fdfa00;
 }
+
 .navbar-default .navbar-toggle {
   border-color: #656565;
 }
+
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
   background-color: #fdfa00;
 }
+
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #656565;
 }
+
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
   border-color: #656565;
@@ -241,11 +249,9 @@ input.search-query {
 }
 
 .filter-font{
-
   font-family: 'Cabin Bold ', sans-serif;
   font-weight: 700;
 }
-
 
 .darker-gray-background{
   background-color: #6C6C6C;
@@ -284,9 +290,11 @@ input.search-query {
   fill:none;
   stroke:#eee;
 }
+
 #xaxis text, #yaxis text {
   font-size: 10px;
 }
+
 #yaxis { padding-top: 10px;}
 /* end of graph styles */
 
