@@ -82,4 +82,11 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
     $scope.$apply();
   };
 
+  $scope.reset = function () {
+     $scope.selectWhen('YEAR');
+     $scope.selectClassification('ALL');
+    $scope.searchQuery = null
+    $scope.search();
+  }
+
 });
