@@ -24,6 +24,10 @@ var renderIndex = function (req, res) {
   res.render('index', pageData);
 };
 
+//var renderLanding = function (req, res) {
+//  res.render('partials/landing/landing.jade');
+//};
+
 app.get('/about', function (req, res) {
   renderIndex(req, res);
 });
@@ -36,7 +40,14 @@ app.get('/contact', function (req, res) {
   renderIndex(req, res);
 });
 
-app.get('/:state?', function (req, res) {
+app.get('/', function (req, res) {
+  //renderLanding(req, res);
+  //res.redirectTo('/landing');
+  renderIndex(req, res);
+});
+
+
+app.get('/recalls/:state?', function (req, res) {
   renderIndex(req, res);
 });
 

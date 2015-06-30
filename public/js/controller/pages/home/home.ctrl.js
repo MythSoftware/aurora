@@ -109,11 +109,11 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams, recal
     currentTab = localStorage['activeTab'];
     for (abbr in stateTabs) {
       if (abbr > currentTab) {
-        $location.path('/' + abbr);
+        $location.path('/recalls/' + abbr);
         return;
       }
     }
-    $location.path('/add');
+    $location.path('/recalls/add');
   };
 
   var buildAllStates = function () {
