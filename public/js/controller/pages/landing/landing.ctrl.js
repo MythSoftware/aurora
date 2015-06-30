@@ -8,7 +8,9 @@ auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, 
 
     $scope.init = function() {
         //google.setOnLoadCallback(drawUSMap);
-        drawUSMap();
+        //drawUSMap();
+
+        drawD3Map();
     };
 
 });

@@ -18,7 +18,7 @@ auroraApp.config(['$locationProvider', '$routeProvider',
         }).
 
       when('/landing', {
-          templateUrl: 'partials/home/landing',
+          templateUrl: 'partials/landing/landing',
           controller: 'LandingCtrl'
         }).
 
@@ -26,7 +26,6 @@ auroraApp.config(['$locationProvider', '$routeProvider',
         templateUrl: 'partials/home',
         controller: 'HomeCtrl'
       }).
-
       otherwise({
         redirectTo: '/'
       });

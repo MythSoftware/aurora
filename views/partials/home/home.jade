@@ -1,19 +1,21 @@
 extends ../../templates/loading.content.jade
 block content
+  img(src="images/foodbanner.png" class="img-responsive ")
   div(class="container")
     include crit.jade
+  div(class="container" style="background:#D4D4D4")
     include graph.jade
-    ul(class="nav nav-tabs")
+    ul(class="nav nav-tabs gray-map-background pad-top-15" id="currStateNav" )
       li(ng-repeat="abbr in getStateTabs()",
         role="presentation",
         class="{{isActive(abbr) && 'active' || ''}}")
-        a(href="/{{abbr}}")
-          span {{getStateName(abbr)}}
-          span(class="badge") {{getStateCount(abbr)}}
+        a(href="/{{abbr}}" class="off-gray-nav")
+          span(class="stateDropdown") {{getStateName(abbr)}}
+          span(class="badge recallCount") {{getStateCount(abbr)}}
           small
-            span(ng-click="closeTab(abbr, $event)", class="active-hover glyphicon glyphicon-remove")
+            span(ng-click="closeTab(abbr, $event)", class="active-hover glyphicon glyphicon-remove " )
       li(role="presentation", class="{{isAdding() && 'active' || ''}}")
-        a(href="/add")
+        a.off-gray-nav(href="/add")
           span(class="glyphicon glyphicon-plus")
     div(ng-if="isAdding()")
       include select.state.form.jade

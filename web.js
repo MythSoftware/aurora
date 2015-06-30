@@ -1,12 +1,5 @@
 var express = require('express');
 var url = require('url');
-var secretProperties;
-
-try {
-  secretProperties = require('./secretProperties.js');
-} catch (e) {
-  secretProperties = {};
-}
 
 var app;
 
@@ -40,8 +33,8 @@ app.get('/users', function (req, res) {
 });
 
 app.get('/contact', function (req, res) {
-	  renderIndex(req, res);
-	});
+  renderIndex(req, res);
+});
 
 app.get('/:state?', function (req, res) {
   renderIndex(req, res);
@@ -64,12 +57,16 @@ app.get('/partials/users', function (req, res) {
 });
 
 app.get('/partials/contact', function (req, res) {
-	  res.render('partials/contact/contact.jade');
-	});
-
-app.get('/partials/home/landing', function (req, res) {
-  res.render('partials/home/landing.jade');
+  res.render('partials/contact/contact.jade');
 });
+
+app.get('/partials/landing/landing', function (req, res) {
+  res.render('partials/landing/landing.jade');
+});
+
+var contactMessagesApi = require('./api/ContactMessagesApi.js')(app);
+
+contactMessagesApi.start();
 
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

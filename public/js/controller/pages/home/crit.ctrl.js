@@ -44,7 +44,7 @@ auroraApp.controller('CritCtrl', function($scope, recallService) {
       case 'CLASS_II':
         return 'Class II';
       default:
-        return 'CLASS III';
+        return 'Class III';
     }
   };
 

@@ -1,7 +1,7 @@
 // scope here is RecallTabCtrl
 extends ../../templates/loading.content.jade
 block content
-  div(class="alert alert-warning" role="alert", ng-if="getRecallStore().getCollection().length > 0 || isFetchedSome()") {{getRecallStore().getMeta().disclaimer}}
+  div.rem-margin-bot(class="alert alert-warning" role="alert", ng-if="getRecallStore().getCollection().length > 0 || isFetchedSome()") {{getRecallStore().getMeta().disclaimer}}
   div(class="alert alert-success", role="alert", ng-if="getRecallStore().getCollection().length == 0 && !isFetchedSome()") Awesome! No recalls were found.
   div(class="panel panel-default recall-panel")
     ul(class="list-group")

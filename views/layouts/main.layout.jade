@@ -11,6 +11,8 @@ html(ng-app='auroraApp', lang="en")
     link(href="/lib/bootstrap-3.3.4-dist/css/bootstrap.min.css", rel="stylesheet")
     link(href="/css/navbar-static-top.css", rel="stylesheet")
     link(href="/css/styles.css", rel="stylesheet")
+    link(href="/css/map-graph.css", rel="stylesheet")
+
     script(src="/lib/js/angular.min.js")
     script(src="/lib/js/ng-route.min.js")
     script(src="/lib/js/jquery.min.js")
@@ -27,6 +29,7 @@ html(ng-app='auroraApp', lang="en")
     script(src="/js/util/scroll.detector.js")
     script(src="/js/util/throttle.js")
     script(src="/js/util/backtotop.js")
+    script(src="/js/util/googlefont.js")
     // services
     script(src="/js/service/feature.service.js")
     script(src="/js/service/recall.service.js")
@@ -42,11 +45,16 @@ html(ng-app='auroraApp', lang="en")
     script(src="/js/controller/pages/home/graph.ctrl.js")
     script(src="/js/controller/pages/about/about.ctrl.js")
     script(src="/js/controller/pages/contact/contact.ctrl.js")
-    script(src="/js/controller/pages/home/landing.ctrl.js")
+    script(src="/js/controller/pages/landing/landing.ctrl.js")
 
     //Google Charts
     script(src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['geochart']}]}")
     script(src='/js/util/usmap.js')
+
+    //D3 MapGraph
+    script(src="/js/controller/pages/landing/map-graph.js")
+
+
 
 
   body
@@ -57,4 +65,5 @@ html(ng-app='auroraApp', lang="en")
     block footer
     script(src="/lib/js/jquery.min.js")
     script(src="/lib/bootstrap-3.3.4-dist/js/bootstrap.min.js")
-
+    script(src="/lib/js/d3.min.js")
+    script(src="/lib/js/uStates.js")
