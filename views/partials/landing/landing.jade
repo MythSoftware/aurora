@@ -1,11 +1,12 @@
 block content
 
-  img(src="images/banner.png" class= "img-responsive")
+  img(src="images/fruitsbannerhome2.jpg" class= "img-responsive")
   div( ng-init="init()")
-    div.row.row-heights.darker-gray-background
-      span.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2.above-map-banner-font
-      span.glyphicon.glyphicon-arrow-down(style="color: #FDFA00")
-      span.above-map-banner-font &nbsp&nbspNumber of Food Recalls by State
+    div.container-fluid
+      div.row.row-heights.darker-gray-background
+        span.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2.above-map-banner-font
+        span.glyphicon.glyphicon-arrow-down(style="color: #FDFA00")
+        span.above-map-banner-font &nbsp&nbspNumber of Food Recalls by State
     div.gray-map-background
       div(id="landingContent", class='container')
         include map-graph.jade

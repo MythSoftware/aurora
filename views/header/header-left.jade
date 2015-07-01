@@ -1,7 +1,7 @@
-ul(ng-controller="HeaderLeftCtrl as headerLeftCtrl", class="nav navbar-nav navbar-right")
-  li(class="{{isHome() && 'active' || 'data-test-display-name'}}", data-test-display-name="Recalls")
+ul(ng-controller="HeaderLeftCtrl as headerLeftCtrl", class="nav navbar-nav navbar-right nav-navbar-collapse")
+  li(class="{{isHome() && 'active' || 'data-test-display-name'}}", data-test-display-name="Recalls", data-toggle="collapse" data-target=".navbar-collapse.in")
     a(href="/recalls") Food Recalls
-  li(class="{{getCurrentPath() == '/about' && 'active' || ''}}",data-test-display-name="About")
+  li(class="{{getCurrentPath() == '/about' && 'active' || ''}}", data-test-display-name="About", data-toggle="collapse" data-target=".navbar-collapse.in" )
     a(href="/about") About
-  li(ng-if="hasFeature('contacts')", class="{{getCurrentPath() == '/contact' && 'active' || ''}}" )
+  li(ng-if="hasFeature('contacts')", class="{{getCurrentPath() == '/contact' && 'active' || ''}}", data-toggle="collapse" data-target=".navbar-collapse.in" )
     a(href="/contact") Contact Us
