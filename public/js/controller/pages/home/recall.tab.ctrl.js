@@ -68,13 +68,13 @@ auroraApp.controller('RecallTabCtrl', function($scope, $controller, $routeParams
 
   $scope.getClassificationClass = function (recall) {
     if (recall.classification == 'Class III') {
-      return 'label-danger';
+      return 'label-success';
     }
     if (recall.classification == 'Class II') {
       return 'label-warning';
     }
     if (recall.classification == 'Class I') {
-      return 'label-success';
+      return 'label-danger';
     }
     return 'label-default';
   };
