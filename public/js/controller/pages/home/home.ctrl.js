@@ -7,7 +7,9 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams, recal
     _recallServiceSubIds = [];
     _recallServiceSubIds.push(recallService.subscribe(recallService.Event.UPDATE_CRIT, fetchCounts));
     _recallServiceSubIds.push(recallService.subscribe(recallService.Event.FETCH_COUNT, handleFetchCount));
-    buildAllStates();
+
+    _allStates = recallService.buildAllStates();
+
     if (!localStorage['stateTabs']) {
       localStorage['stateTabs'] = '{}';
     }
@@ -116,13 +118,6 @@ auroraApp.controller('HomeCtrl', function($scope, $location, $routeParams, recal
     $location.path('/recalls/add');
   };
 
-  var buildAllStates = function () {
-    var key;
-    _allStates = [];
-    for (key in StateHash.reverse) {
-      _allStates.push(StateHash.reverse[key]);
-    }
-  };
 
   var tabExists = function (stateAbbr) {
     return !!_stateTabs[stateAbbr];
