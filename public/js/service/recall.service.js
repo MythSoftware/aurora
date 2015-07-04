@@ -8,15 +8,19 @@ auroraApp.factory('recallService', function () {
 
   service.LIMIT = 50;
   service.URL = 'https://api.fda.gov/food/enforcement.json';
+  service.API_KEY = 'hxSIUuPHE4TVRPHL13ATQyUUfGg0c1eePomd20Ts';
 
   var _countMap = {};
+
   var ONE_WEEK = 604800000;
 
   service.Event = {
     FETCH_COUNT:'FETCH_COUNT',
     FETCH_COUNT_ERROR:'FETCH_COUNT_ERROR',
     UPDATE_CRIT:'UPDATE_CRIT',
-    SHOW_GRAPH:'SHOW_GRAPH'
+    SHOW_GRAPH:'SHOW_GRAPH',
+    FETCH_NATIONAL_COUNT:'FETCH_NATIONAL_COUNT',
+    FETCH_NATIONAL_COUNT_ERROR:'FETCH_NATIONAL_COUNT_ERROR'
   };
 
   service.criteria = {
@@ -28,6 +32,22 @@ auroraApp.factory('recallService', function () {
   service.updateCriteria = function (key, value) {
     service.criteria[key] = value;
     service.publish(service.Event.UPDATE_CRIT, service.criteria);
+  };
+
+  service.fetchNationwideCounts = function () {
+    var promise;
+
+    //Use 'NW' for "Nationwide" counts.
+    promise = fetchCount(null);
+
+    $.when($, promise).then(
+        function () {
+          service.publish(service.Event.FETCH_NATIONAL_COUNT);
+        },
+        function(res) {
+          service.publish(service.Event.FETCH_NATIONAL_COUNT_ERROR, res);
+        }
+    );
   };
 
   service.fetchCounts = function (stateAbbrArr) {
@@ -57,12 +77,15 @@ auroraApp.factory('recallService', function () {
     if (service.criteria.searchQuery) {
       str += 'product_description:' + service.criteria.searchQuery.replace(new RegExp(' ', 'g'), '+') + '+AND+';
     }
-    str += '(distribution_pattern:' + stateAbbr + '+' + StateHash[stateAbbr] + ')';
+
+    if (stateAbbr) {
+      str += '(distribution_pattern:' + stateAbbr + '+"' + StateHash[stateAbbr].replace(' ', '+') + '")+AND+';
+    }
     now = Date.now();
     from = now - millisToSubtract;
     fromStr = moment(from).format('YYYYMMDD');
     toStr = moment(now).format('YYYYMMDD');
-    str += '+AND+recall_initiation_date:[' + fromStr + '+TO+' + toStr +']';
+    str += 'recall_initiation_date:[' + fromStr + '+TO+' + toStr +']';
     classText = getClassificationText();
     if (classText) {
       str += '+AND+classification:' + classText;
@@ -71,7 +94,14 @@ auroraApp.factory('recallService', function () {
   };
 
   service.getStateCount = function (stateAbbr) {
-    return _countMap[stateAbbr];
+    if(stateAbbr in _countMap) {
+      return _countMap[stateAbbr];
+
+    } else {
+
+      return 0;
+    }
+
   };
 
   service.isShowingGraph = function () {
@@ -86,6 +116,16 @@ auroraApp.factory('recallService', function () {
     else {
       $('#graph-container').css('max-height', 0);
     }
+  };
+
+  service.buildAllStates = function () {
+    var key;
+    var allStates = [];
+    for (key in StateHash.reverse) {
+      allStates.push(StateHash.reverse[key]);
+    }
+
+    return allStates;
   };
 
   var getClassificationText = function () {
@@ -119,25 +159,72 @@ auroraApp.factory('recallService', function () {
   var fetchCount = function (abbr) {
     var d, url;
     d = $.Deferred();
-    var form = {
-      search: service.getSearchString()
+
+    url = service.URL + "?api_key=" + service.API_KEY + '&search=' + service.getSearchString(abbr);
+
+    if(abbr == null) {
+      url += '&count=distribution_pattern';
     }
-    url = service.URL + '?search=' + service.getSearchString(abbr);
+
     httpUtil.ajax(
       'GET',
       url,
       null,
       function (res) {
-        _countMap[abbr] = res.meta.results.total;
+
+        var national = 0;
+
+        if(abbr) {
+          _countMap[abbr] = res.meta.results.total;
+
+        } else {
+
+          //Initialize the countMap with all states set to zero so that the national numbers get added to them
+          //appropriately.
+
+          angular.forEach(StateHash, function (value, key) {
+            if(key != 'reverse') {
+              _countMap[key] = 0;
+            }
+          });
+
+          res.results.forEach(function (value) {
+
+            var term = value.term.toUpperCase();
+
+            if(term in StateHash) {
+
+              _countMap[term] = value.count;
+
+            } else if(_.startCase(term) in StateHash.reverse) {
+
+              _countMap[StateHash.reverse[_.startCase(term)]] = value.count;
+            } else if(term.toLowerCase() == 'national' || term.toLowerCase() == 'worldwide') {
+              national += value.count;
+            }
+
+          });
+
+          //Now add the national counts to all the states.
+          angular.forEach(_countMap, function (value, key) {
+            _countMap[key] += national;
+          });
+        }
+
         d.resolve(res);
       },
       function (res) {
-        _countMap[abbr] = 0;
+
+        if(abbr) {
+          _countMap[abbr] = 0;
+        }
+
         d.resolve(res);
       }
     );
     return d.promise();
   };
+
 
   return service;
 });
