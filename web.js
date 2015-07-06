@@ -1,5 +1,6 @@
 var express = require('express');
 var url = require('url');
+var favicon = require('serve-favicon');
 
 var app;
 
@@ -15,6 +16,7 @@ app.configure(function(){
   app.set('view options', {
     layout: false
   });
+  app.use(favicon(__dirname + '/public/images/favicon.ico'));
 });
 
 // Routes
@@ -79,6 +81,7 @@ var contactMessagesApi = require('./api/ContactMessagesApi.js')(app);
 
 contactMessagesApi.start();
 
+app.require
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
