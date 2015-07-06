@@ -1,4 +1,4 @@
-auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, recallService, $window) {
+auroraApp.controller('LandingCtrl', function($scope, $http, $controller, $routeParams, recallService, $window) {
     var _recallServiceSubIds, _allStates;
 
     $scope.init = function() {
@@ -17,6 +17,26 @@ auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, 
         });
     };
 
+    $scope.findState = function() {
+        var param =  {
+            params: {
+                zip: this.zipCode
+
+            }
+        };
+        console.log("param object is "+ param);
+        $http.get('/api/ziptostate', param).
+            success(function(data, status, headers, config) {
+                console.log(data.state);
+                window.location.href = 'http://localhost:8888/recalls/'+ data.state;
+            }).
+            error(function(data, status, headers, config) {
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });;
+
+    };
 
     //Private
     function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */

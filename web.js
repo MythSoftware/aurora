@@ -77,7 +77,11 @@ app.get('/partials/landing/landing', function (req, res) {
 
 var contactMessagesApi = require('./api/ContactMessagesApi.js')(app);
 
+var zipCodeApi = require('./api/ZipStatesApi.js')(app);
+
 contactMessagesApi.start();
+
+zipCodeApi.start();
 
 app.listen(8888, function (){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

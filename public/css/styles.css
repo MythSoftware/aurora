@@ -128,6 +128,11 @@ body {
   padding-top: 40px;
 }
 
+.unbolded{
+  font-family: 'Cabin ', sans-serif;
+  font-weight: 500;
+}
+
 .recall-panel .label-container {
   float: left;
   width: 90px;

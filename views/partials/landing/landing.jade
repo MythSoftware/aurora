@@ -3,10 +3,22 @@ block content
   img(src="images/fruitsbannerhome2.jpg" class= "img-responsive")
   div( ng-init="init()")
     div.container-fluid
+    div.row
+      br
+      div.col-lg-5.col-lg-offset-2.col-md-6.col-md-offset-2.col-sm-5.col-sm-offset-2.col-xs-offset-1
+        span To get started, either enter your zip code or click on a state below.
+      div.form-group.col-lg-3.col-md-3.col-sm-offset-0.col-sm-4.col-xs-8.col-xs-offset-2
+        form(ng-submit="findState()")
+          button(type="submit" class="btn btn-default" style="float: right")
+            span(class="glyphicon glyphicon-search")
+          div(style="overflow:hidden")
+            input( type="text", class="  form-control", placeholder="Zip Code", ng-model = 'zipCode')
+    div.container-fluid
       div.row.row-heights.darker-gray-background
         span.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2.above-map-banner-font
         span.glyphicon.glyphicon-arrow-down(style="color: #FDFA00")
         span.above-map-banner-font &nbsp&nbspNumber of Food Recalls by State
+
     div.gray-map-background
       div(id="landingContent", class='container')
         include map-graph.jade
@@ -50,16 +62,6 @@ block content
               a(href='#') Voluntary
             li
               a(href='#') Mandatory
-  div.container-fluid
-    div.row
-      br
-      div.col-lg-6.col-md-6.col-sm-5
-        span Search food recalls by state or nationwide. Filter recalls by time period, classification and whether the recall is voluntary or mandatory.
-      div.form-group.col-lg-3.col-md-3.col-sm-5
-        button(type="submit" class="btn btn-default" style="float: right")
-          span(class="glyphicon glyphicon-search")
-        div(style="overflow:hidden")
-          input( type="text", class="  form-control", placeholder="Search")
 
     div.row.gray-footer.row-heights
       span &nbsp
