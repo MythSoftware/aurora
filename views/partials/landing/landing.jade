@@ -22,7 +22,7 @@ block content
         span.col-lg-offset-2.col-md-offset-2.col-sm-offset-1.col-xs-offset-1.above-map-banner-font
         span.glyphicon.glyphicon-arrow-down(style="color: #FDFA00")
         span.above-map-banner-font &nbsp&nbspNumber of Food Recalls by State
-        div.btn-group.col-lg-offset-3.btn-group.col-md-offset-2.btn-group.col-sm-offset-2.col-xs-offset-1
+        div.btn-group.col-lg-offset-3.btn-group.col-md-offset-2.btn-group.col-sm-offset-2.col-xs-offset-1.hidden-xs
           a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
             | Past Year&nbsp;
             span.caret
@@ -38,7 +38,7 @@ block content
             li
               a(href='#') Past 5 Years
         div.btn-group
-          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
+          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font.hidden-xs
             | All Classifications&nbsp;
             span.caret
           ul(class='dropdown-menu')
@@ -59,4 +59,40 @@ block content
 
     div.row.gray-footer.row-heights
       span &nbsp
-
+      
+//begin hidden sidebar
+div#crit-navbar-hidden.row.row-heights.darker-gray-background(class = 'navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs')
+  p.text-center.white-font Filter Map
+  div.row.row-heights
+    div.btn-group.col-sm-offset-2.col-xs-offset-1
+      a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
+        | Past Year&nbsp;
+        span.caret
+      ul(class='dropdown-menu')
+        li
+          a(href='#') Past Week
+        li
+          a(href='#') Past Month
+        li
+          a(href='#') Past 6 Months
+        li
+          a(href='#') Past Year
+        li
+          a(href='#') Past 5 Years
+    div.btn-group.col-xs-offset-1.col-sm-offset-2
+      a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
+        | All Classifications&nbsp;
+        span.caret
+      ul(class='dropdown-menu')
+        li
+          a(href='#') Class 1
+        li
+          a(href='#') Class 2
+        li
+          a(href='#') Class 3
+        li
+          a(href='#') All Classes
+div(class="canvas")
+  div(class="hidden-sm hidden-md hidden-lg")
+    button(type="button", class="btn btn-default btn-filter", data-toggle="offcanvas", data-target="#crit-navbar-hidden", data-canvas="body", aria-expanded="false")
+      span(class="glyphicon glyphicon-filter", aria-hidden="true")
