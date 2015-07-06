@@ -1,6 +1,6 @@
 auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controller, $routeParams, recallService, $window) {
     var _recallServiceSubIds, _allStates;
-
+    $scope.show = false;
     $scope.init = function() {
         _recallServiceSubIds = [];
         _recallServiceSubIds.push(recallService.subscribe(recallService.Event.UPDATE_CRIT, fetchCounts));
@@ -28,9 +28,10 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controll
             success(function(data, status, headers, config) {
                 if(data.state === "no matching state"){
                     $scope.zipCode = null;
-                    alert(data.zipCode + " is not a valid zip code, please try again.");
+                    $scope.show = true;
                 }
                 else {
+                    $scope.show = false;
                     var host = $location.host();
 
                     if(host == 'localhost'){

@@ -5,7 +5,7 @@ block content
     div.container-fluid
     div.row
       br
-      div.col-lg-5.col-lg-offset-2.col-md-6.col-md-offset-2.col-sm-5.col-sm-offset-2.col-xs-offset-1
+      div.col-lg-5.col-lg-offset-2.col-md-6.col-md-offset-2.col-sm-5.col-sm-offset-2.col-xs-offset-2
         span To get started, either enter your zip code or click on a state below.
       div.form-group.col-lg-3.col-md-3.col-sm-offset-0.col-sm-4.col-xs-8.col-xs-offset-2
         form(ng-submit="findState()")
@@ -13,6 +13,10 @@ block content
             span(class="glyphicon glyphicon-search")
           div(style="overflow:hidden")
             input( type="text", class="  form-control", placeholder="Zip Code", ng-model = 'zipCode')
+    div.row
+      div.text-center
+        span(ng-show="show" class=" red-alert glyphicon glyphicon-exclamation-sign")
+        span.red-alert(ng-show="show" )  Not a valid zip code, please try again.
     div.container-fluid
       div.row.row-heights.darker-gray-background
         span.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2.above-map-banner-font

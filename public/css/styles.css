@@ -132,7 +132,9 @@ body {
   font-family: 'Cabin ', sans-serif;
   font-weight: 500;
 }
-
+.red-alert{
+  color:red;
+}
 .recall-panel .label-container {
   float: left;
   width: 90px;
