@@ -7,10 +7,10 @@ var karma = require('karma').server;
 var karma = require('gulp-karma');
 
 var testFiles = [
-    'tests/js/todo.js',
-    'tests/js/todo.util.js',
-    'tests/js/todo.App.js',
-    'tests/js/client/*.js'
+    //'tests/js/todo.js',
+    //'tests/js/todo.util.js',
+    //'tests/js/todo.App.js',
+    //'tests/js/client/*.js'
 ];
 
 gulp.task('serve:test', function (done) {
