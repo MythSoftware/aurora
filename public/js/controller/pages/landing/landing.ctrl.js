@@ -5,6 +5,7 @@ auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, 
         _recallServiceSubIds = [];
         _recallServiceSubIds.push(recallService.subscribe(recallService.Event.UPDATE_CRIT, fetchCounts));
         _recallServiceSubIds.push(recallService.subscribe(recallService.Event.FETCH_NATIONAL_COUNT, handleFetchCount));
+        _recallServiceSubIds.push(recallService.subscribe(recallService.Event.FETCH_NATIONAL_COUNT_ERROR, handleFetchCount));
 
         _allStates = recallService.buildAllStates();
 
@@ -69,6 +70,14 @@ auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, 
         uStates.draw("#statesvg", mapData, tooltipHtml);
     }
 
+    $scope.selectWhen = function (when) {
+        recallService.updateCriteria('when', when);
+    };
+
+    $scope.selectClassification = function (classification) {
+        recallService.updateCriteria('classification', classification);
+    };
+
     var fetchCounts = function () {
         recallService.fetchNationwideCounts();
     };
@@ -77,5 +86,37 @@ auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, 
         $scope.$apply();
 
         $scope.drawD3Map();
+    };
+
+    $scope.getWhenLabel = function (crit) {
+        switch (crit) {
+            case 'MONTH':
+                return 'Past Month';
+            case 'SIX_MONTHS':
+                return 'Past 6 Months';
+            case 'YEAR':
+                return 'Past Year';
+            case 'FIVE_YEARS':
+                return 'Past 5 Years';
+            default:
+                return 'Past Week';
+        }
+    };
+
+    $scope.getClassificationLabel = function (classification) {
+        switch (classification) {
+            case 'ALL':
+                return 'All Classifications';
+            case 'CLASS_I':
+                return 'Class I';
+            case 'CLASS_II':
+                return 'Class II';
+            default:
+                return 'Class III';
+        }
+    };
+
+    $scope.getCriteria = function () {
+        return recallService.criteria;
     };
 });

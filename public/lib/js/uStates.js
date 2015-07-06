@@ -72,7 +72,10 @@
 			window.location = "/recalls/" + d.id;
 
 		}
-		
+
+		//Remove any previous map data in case of redraw.
+		d3.select(id).selectAll(".state").remove();
+
 		d3.select(id).selectAll(".state")
 			.data(uStatePaths).enter().append("path").attr("class","state").attr("d",function(d){ return d.d;})
 			.style("fill",function(d){ return data[d.id].color; })
