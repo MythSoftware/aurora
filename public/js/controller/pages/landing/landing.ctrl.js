@@ -37,9 +37,9 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controll
 
                     if(port != 80 || port != 443){
                         host = location.host;  // get port
-                        window.location.href =  ' http://' + host +'/recalls/' + data.state;
+                        $window.location.href =  ' http://' + host +'/recalls/' + data.state;
                     }
-                    window.location.href =  ' http://' + host +'/recalls/' + data.state;
+                    $window.location.href =  ' http://' + host +'/recalls/' + data.state;
                 }
              }).
             error(function(data, status, headers, config) {
