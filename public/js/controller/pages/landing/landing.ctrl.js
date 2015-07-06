@@ -28,8 +28,14 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $controller, $routeP
         $http.get('/api/ziptostate', param).
             success(function(data, status, headers, config) {
                 console.log(data.state);
-                window.location.href = 'http://localhost:8888/recalls/'+ data.state;
-            }).
+                if(data.state === "no matching state"){
+                    $scope.zipCode = null;
+                    alert(data.zipCode + " is not a valid zip code, please try again.");
+                }
+                else {
+                    window.location.href = 'http://localhost:8888/recalls/' + data.state;
+                }
+             }).
             error(function(data, status, headers, config) {
 
                 // called asynchronously if an error occurs
