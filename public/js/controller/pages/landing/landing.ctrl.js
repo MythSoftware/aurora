@@ -26,7 +26,6 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controll
         console.log("param object is "+ param);
         $http.get('/api/ziptostate', param).
             success(function(data, status, headers, config) {
-                console.log(data.state);
                 if(data.state === "no matching state"){
                     $scope.zipCode = null;
                     alert(data.zipCode + " is not a valid zip code, please try again.");
@@ -36,17 +35,14 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controll
 
                     if(host == 'localhost'){
                         host = location.host;  // get port
-                        console.log(host +'/recalls/' + data.state);
                         window.location.href =  ' http://' + host +'/recalls/' + data.state;
                     }
-                    console.log(host +'/recalls/' + data.state);
                     window.location.href =  ' http://' + host +'/recalls/' + data.state;
                 }
              }).
             error(function(data, status, headers, config) {
                 alert("Connection error");
             });;
-
     };
 
     //Private
