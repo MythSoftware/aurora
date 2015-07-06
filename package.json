@@ -28,6 +28,11 @@
       "karma-phantomjs-launcher": "^0.1.4",
       "karma-requirejs": "^0.2.2",
       "karma-safari-launcher": "^0.1.1",
-      "requirejs": "^2.1.15"
+      "requirejs": "^2.1.15",
+      "browser-sync": "~2.7.13",
+      "selenium-standalone": "~4.4.2",
+      "gulp-mocha": "~2.1.2",
+      "karma": "~0.12.37",
+      "gulp-karma": "0.0.4"
   }
 }
