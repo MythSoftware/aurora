@@ -1,4 +1,4 @@
-auroraApp.controller('LandingCtrl', function($scope, $http, $controller, $routeParams, recallService, $window) {
+auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controller, $routeParams, recallService, $window) {
     var _recallServiceSubIds, _allStates;
 
     $scope.init = function() {
@@ -21,7 +21,6 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $controller, $routeP
         var param =  {
             params: {
                 zip: this.zipCode
-
             }
         };
         console.log("param object is "+ param);
@@ -33,13 +32,19 @@ auroraApp.controller('LandingCtrl', function($scope, $http, $controller, $routeP
                     alert(data.zipCode + " is not a valid zip code, please try again.");
                 }
                 else {
-                    window.location.href = 'http://localhost:8888/recalls/' + data.state;
+                    var host = $location.host();
+
+                    if(host == 'localhost'){
+                        host = location.host;  // get port
+                        console.log(host +'/recalls/' + data.state);
+                        window.location.href =  ' http://' + host +'/recalls/' + data.state;
+                    }
+                    console.log(host +'/recalls/' + data.state);
+                    window.location.href =  ' http://' + host +'/recalls/' + data.state;
                 }
              }).
             error(function(data, status, headers, config) {
-
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
+                alert("Connection error");
             });;
 
     };
