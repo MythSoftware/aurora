@@ -2,7 +2,7 @@ module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: 'unit_tests',
+        basePath: 'tests',
 
 
         // frameworks to use
@@ -12,8 +12,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            {pattern: 'js/**/*', included: false},
-            "test-main.js"
+            {pattern: 'js/specs/aurora/main/*.js', included: false}
         ],
 
 
@@ -63,10 +62,10 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: [
-            //'Firefox',
+            'Firefox',
             //'Safari',
             //'Chrome'
-            'PhantomJS'
+            //'PhantomJS'
         ],
 
         coverageReporter : {
