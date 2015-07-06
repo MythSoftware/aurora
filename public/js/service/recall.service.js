@@ -79,7 +79,7 @@ auroraApp.factory('recallService', function () {
     }
 
     if (stateAbbr) {
-      str += '(distribution_pattern:' + stateAbbr + '+"' + StateHash[stateAbbr].replace(' ', '+') + '")+AND+';
+      str += '(distribution_pattern:' + stateAbbr + '+"' + StateHash[stateAbbr].replace(new RegExp(' ', 'g'), '+') + '" + national + worldwide)+AND+';
     }
     now = Date.now();
     from = now - millisToSubtract;
@@ -217,6 +217,13 @@ auroraApp.factory('recallService', function () {
 
         if(abbr) {
           _countMap[abbr] = 0;
+
+        } else {
+          angular.forEach(StateHash, function (value, key) {
+            if(key != 'reverse') {
+              _countMap[key] = 0;
+            }
+          })
         }
 
         d.resolve(res);

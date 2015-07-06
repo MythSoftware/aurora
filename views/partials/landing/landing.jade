@@ -15,41 +15,32 @@ block content
         span.col-lg-offset-1.btn-group.col-md-offset-1.btn-group.col-sm-offset-1 FILTER BY:
         div.btn-group.col-lg-offset-1.btn-group.col-md-offset-1.btn-group.col-sm-offset-1
           a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle
-            | Past Year&nbsp;
+            | {{getWhenLabel(getCriteria().when)}}&nbsp;
             span.caret
           ul(class='dropdown-menu')
             li
-              a(href='#') Past Week
+              a(href="#" ng-click="selectWhen('WEEK')") {{getWhenLabel('WEEK')}}
             li
-              a(href='#') Past Month
+              a(href="#" ng-click="selectWhen('MONTH')") {{getWhenLabel('MONTH')}}
             li
-              a(href='#') Past 6 Months
+              a(href="#" ng-click="selectWhen('SIX_MONTHS')") {{getWhenLabel('SIX_MONTHS')}}
             li
-              a(href='#') Past Year
+              a(href="#" ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
             li
-              a(href='#') Past 5 Years
+              a(href="#" ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
         div.btn-group
           a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle
-            | All Classifications&nbsp;
+            | {{getClassificationLabel(getCriteria().classification)}}&nbsp;
             span.caret
           ul(class='dropdown-menu')
             li
-              a(href='#') Class 1
+              a(href='#' ng-click="selectClassification('ALL')") {{getClassificationLabel('ALL')}}
             li
-              a(href='#') Class 2
+              a(href='#' ng-click="selectClassification('CLASS_I')") {{getClassificationLabel('CLASS_I')}}
             li
-              a(href='#') Class 3
+              a(href='#' ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
             li
-              a(href='#') All Classes
-        div.btn-group
-          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle
-            | Mandatory&nbsp;
-            span.caret
-          ul(class='dropdown-menu')
-            li
-              a(href='#') Voluntary
-            li
-              a(href='#') Mandatory
+              a(href='#' ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
   div.container-fluid
     div.row
       br
