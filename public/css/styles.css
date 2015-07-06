@@ -135,6 +135,9 @@ body {
 .red-alert{
   color:red;
 }
+.white-font{
+  color:white;
+}
 .recall-panel .label-container {
   float: left;
   width: 90px;
