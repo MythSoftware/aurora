@@ -4,6 +4,14 @@ var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
 var nightwatch = require('gulp-nightwatch');
 var karma = require('karma').server;
+var karma = require('gulp-karma');
+
+var testFiles = [
+    'tests/js/todo.js',
+    'tests/js/todo.util.js',
+    'tests/js/todo.App.js',
+    'tests/js/client/*.js'
+];
 
 gulp.task('serve:test', function (done) {
     browserSync({
@@ -59,8 +67,16 @@ gulp.task('default', function() {
 
 gulp.task('unit_test', function (done) {
     karma.start({
-        configFile: 'karma.conf.js',
+        configFile: './karma.conf.js',
         singleRun: true
     }, done);
+});
+
+gulp.task('karma_test', function() {
+    gulp.src(testFiles)
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'watch'
+        }));
 });
 
