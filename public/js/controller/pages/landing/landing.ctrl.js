@@ -1,6 +1,6 @@
-auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, recallService, $window) {
+auroraApp.controller('LandingCtrl', function($scope, $http, $location, $controller, $routeParams, recallService, $window) {
     var _recallServiceSubIds, _allStates;
-
+    $scope.show = false;
     $scope.init = function() {
         _recallServiceSubIds = [];
         _recallServiceSubIds.push(recallService.subscribe(recallService.Event.UPDATE_CRIT, fetchCounts));
@@ -18,6 +18,35 @@ auroraApp.controller('LandingCtrl', function($scope, $controller, $routeParams, 
         });
     };
 
+    $scope.findState = function() {
+        var param =  {
+            params: {
+                zip: this.zipCode
+            }
+        };
+        console.log("param object is "+ param);
+        $http.get('/api/ziptostate', param).
+            success(function(data, status, headers, config) {
+                if(data.state === "no matching state"){
+                    $scope.zipCode = null;
+                    $scope.show = true;
+                }
+                else {
+                    $scope.show = false;
+                    var host = $location.host();
+                    var port = $location.port();
+
+                    if(port != 80 || port != 443){
+                        host = location.host;  // get port
+                        $window.location.href =  ' http://' + host +'/recalls/' + data.state;
+                    }
+                    $window.location.href =  ' http://' + host +'/recalls/' + data.state;
+                }
+             }).
+            error(function(data, status, headers, config) {
+                alert("Connection error");
+            });;
+    };
 
     //Private
     function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */

@@ -16,21 +16,21 @@ block content
           div(class="form-horizontal", role="form")
             div(class="form-group")
               label(class="control-label col-sm-2") Initiation Date:
-              div(class="col-sm-10") {{fromNow(recall.recall_initiation_date)}}
+              div(class="col-sm-10 unbolded") {{fromNow(recall.recall_initiation_date)}}
             div(class="form-group")
               label(class="control-label col-sm-2") Distribution Pattern:
-              div(class="col-sm-10") {{recall.distribution_pattern}}
+              div(class="col-sm-10 unbolded") {{recall.distribution_pattern}}
             div(class="form-group")
               label(class="control-label col-sm-2") Product Description:
-              div(class="col-sm-10") {{recall.product_description}}
+              div(class="col-sm-10 unbolded") {{recall.product_description}}
             div(class="form-group")
               label(class="control-label col-sm-2") Reason for Recall:
-              div(class="col-sm-10") {{recall.reason_for_recall}}
+              div(class="col-sm-10 unbolded") {{recall.reason_for_recall}}
             div(class="form-group")
               label(class="control-label col-sm-2") Voluntary or Mandated:
-              div(class="col-sm-2") {{recall.voluntary_mandated}}
+              div(class="col-sm-2 unbolded") {{recall.voluntary_mandated}}
             div(class="form-group")
               label(class="control-label col-sm-2") Status:
-              div(class="col-sm-2") {{recall.status}}
+              div(class="col-sm-2 unbolded") {{recall.status}}
   div(ng-if="isFetchingNext()", class="loading-div")
     img(src="/images/loading24.gif")
