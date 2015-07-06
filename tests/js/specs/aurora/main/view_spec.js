@@ -4,5 +4,4 @@ describe("aurora/main/view", function() {
         var basicURL = 'aurora'
         expect(basicURL).toBe('aurora');
     });
-
 });
