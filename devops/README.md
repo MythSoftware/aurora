@@ -4,7 +4,7 @@ This document gives a general overview of our DevOps infrastructure and processe
 
 [Aurora](http://aurora.mythsoftware.com) utilizes [Jenkins](https://jenkins-ci.org/), [Ansible](http://www.ansible.com/home) and [Docker](https://www.docker.com) for configuration management and the ability to quickly ship code with zero down time using a rolling deployment strategy. 
 
-[Jenkins](https://jenkins-ci.org/) kicks off the build. It runs our unit tests and functional tests and ensures they pass. Then it kicks off our Ansible playbook to provision the web servers and deploy the code. This step also decrypts our ansible vault and sets up the production environment with the proper credential variables. Then it triggers the docker container to start.
+[Jenkins](https://jenkins-ci.org/) kicks off the build. It runs our unit tests and ensures they pass. Then it kicks off our Ansible playbook to provision the web servers and deploy the code. This step also decrypts our ansible vault and sets up the production environment with the proper credential variables. Then it triggers the docker container to start.
 
 ##Deploy to Production
 
