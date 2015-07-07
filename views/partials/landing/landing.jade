@@ -59,38 +59,39 @@ block content
     div.row.gray-footer.row-heights
       span &nbsp
 
-//begin hidden sidebar
-div#crit-navbar-hidden.row.row-heights.darker-gray-background(class = 'navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs')
-  p.text-center.white-font Filter Map
-  div.row.row-heights
-    div.btn-group.col-sm-offset-2.col-xs-offset-1
-      a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
-        | Past Year&nbsp;
-        span.caret
-      ul(class='dropdown-menu')
-        li
-          a(href='#') Past Week
-        li
-          a(href='#') Past Month
-        li
-          a(href='#') Past 6 Months
-        li
-          a(href='#') Past Year
-        li
-          a(href='#') Past 5 Years
-    div.btn-group.col-xs-offset-1.col-sm-offset-2
-      a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
-        | All Classifications&nbsp;
-        span.caret
-      ul(class='dropdown-menu')
-        li
-          a(href='#') Class 1
-        li
-          a(href='#') Class 2
-        li
-          a(href='#') Class 3
-        li
-          a(href='#') All Classes
+
+
+div#crit-navbar-hidden(class="crit-navbar navmenu navmenu-default navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
+  div(class="navbar navbar-default")
+    h5(class="navmenu-brand") Filter
+    ul(class="nav navbar-nav")
+      li(class="dropdown")
+        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}&nbsp;
+          span(class="caret")
+        ul(class='dropdown-menu')
+          li
+            a(href="#" ng-click="selectWhen('WEEK')") {{getWhenLabel('WEEK')}}
+          li
+            a(href="#" ng-click="selectWhen('MONTH')") {{getWhenLabel('MONTH')}}
+          li
+            a(href="#" ng-click="selectWhen('SIX_MONTHS')") {{getWhenLabel('SIX_MONTHS')}}
+          li
+            a(href="#" ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
+          li
+            a(href="#" ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
+
+      li(class="dropdown")
+        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getClassificationLabel(getCriteria().classification)}}&nbsp;
+          span(class="caret")
+        ul(class="dropdown-menu")
+          li
+            a(ng-click="selectClassification('ALL')") {{getClassificationLabel('ALL')}}
+          li
+            a(ng-click="selectClassification('CLASS_I')") {{getClassificationLabel('CLASS_I')}}
+          li
+            a(ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
+          li
+            a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
 div(class="canvas")
   div(class="hidden-sm hidden-md hidden-lg")
     button(type="button", class="btn btn-default btn-filter", data-toggle="offcanvas", data-target="#crit-navbar-hidden", data-canvas="body", aria-expanded="false")
