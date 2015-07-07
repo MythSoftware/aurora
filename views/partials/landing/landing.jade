@@ -6,31 +6,24 @@ block content
     div.row
       br
       div.col-lg-5.col-lg-offset-2.col-md-6.col-md-offset-2.col-sm-5.col-sm-offset-2.col-xs-offset-2
-        span To get started, either enter your zip code or click on a state below.
+        span To get started: Enter your zip code or click on a state below.
       div.form-group.col-lg-3.col-md-3.col-sm-offset-0.col-sm-4.col-xs-8.col-xs-offset-2
         form(ng-submit="findState()")
           button(type="submit" class="btn btn-default" style="float: right")
             span(class="glyphicon glyphicon-search")
           div(style="overflow:hidden")
-            input( type="text", class="  form-control", placeholder="Zip Code", ng-model = 'zipCode')
+            input( type="text", class=" unbolded form-control", placeholder="Zip Code", ng-model = 'zipCode')
     div.row
       div.text-center
         span(ng-show="show" class=" red-alert glyphicon glyphicon-exclamation-sign")
         span.red-alert(ng-show="show" )  Not a valid zip code, please try again.
     div.container-fluid
       div.row.row-heights.darker-gray-background
-        span.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2.above-map-banner-font
+        span.col-lg-offset-2.col-md-offset-2.col-sm-offset-1.col-xs-offset-1.above-map-banner-font
         span.glyphicon.glyphicon-arrow-down(style="color: #FDFA00")
         span.above-map-banner-font &nbsp&nbspNumber of Food Recalls by State
-
-    div.gray-map-background
-      div(id="landingContent", class='container')
-        include map-graph.jade
-    div.container-fluid.gray-dropdown-background
-      div.row.row-heights
-        span.col-lg-offset-1.btn-group.col-md-offset-1.btn-group.col-sm-offset-1 FILTER BY:
-        div.btn-group.col-lg-offset-1.btn-group.col-md-offset-1.btn-group.col-sm-offset-1
-          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle
+        div.btn-group.col-lg-offset-3.btn-group.col-md-offset-2.btn-group.col-sm-offset-2.col-xs-offset-1.hidden-xs
+          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font
             | {{getWhenLabel(getCriteria().when)}}&nbsp;
             span.caret
           ul(class='dropdown-menu')
@@ -45,7 +38,7 @@ block content
             li
               a(href="#" ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
         div.btn-group
-          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle
+          a.filter-font(data-toggle='dropdown',data-target='.nav-collapse').map-buttons.btn.btn-default.dropdown-toggle.white-font.hidden-xs
             | {{getClassificationLabel(getCriteria().classification)}}&nbsp;
             span.caret
           ul(class='dropdown-menu')
@@ -57,7 +50,49 @@ block content
               a(href='#' ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
             li
               a(href='#' ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
-
+    div.gray-map-background
+      div(id="landingContent", class='container')
+        include map-graph.jade
+    div.container-fluid.darker-gray-background
+      div.row.text-center
+       // span.unbolded.white-font openFDA is a beta research project and not for clinical use. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated.
     div.row.gray-footer.row-heights
       span &nbsp
 
+
+
+div#crit-navbar-hidden(class="crit-navbar navmenu navmenu-default  navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
+  div(class="navbar navbar-default gray-map-background")
+    h5(class="navmenu-brand") Filter Map
+    ul(class="nav navbar-nav")
+      li(class="dropdown ")
+        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}&nbsp;
+          span(class="caret")
+        ul(class='dropdown-menu')
+          li
+            a(href="#" ng-click="selectWhen('WEEK')") {{getWhenLabel('WEEK')}}
+          li
+            a(href="#" ng-click="selectWhen('MONTH')") {{getWhenLabel('MONTH')}}
+          li
+            a(href="#" ng-click="selectWhen('SIX_MONTHS')") {{getWhenLabel('SIX_MONTHS')}}
+          li
+            a(href="#" ng-click="selectWhen('YEAR')") {{getWhenLabel('YEAR')}}
+          li
+            a(href="#" ng-click="selectWhen('FIVE_YEARS')") {{getWhenLabel('FIVE_YEARS')}}
+
+      li(class="dropdown")
+        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getClassificationLabel(getCriteria().classification)}}&nbsp;
+          span(class="caret")
+        ul(class="dropdown-menu")
+          li
+            a(ng-click="selectClassification('ALL')") {{getClassificationLabel('ALL')}}
+          li
+            a(ng-click="selectClassification('CLASS_I')") {{getClassificationLabel('CLASS_I')}}
+          li
+            a(ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
+          li
+            a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
+div(class="canvas")
+  div(class="hidden-sm hidden-md hidden-lg")
+    button(type="button", class="btn btn-default btn-filter", data-toggle="offcanvas", data-target="#crit-navbar-hidden", data-canvas="body", aria-expanded="false")
+      span(class="glyphicon glyphicon-filter", aria-hidden="true")
