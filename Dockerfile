@@ -7,9 +7,12 @@ RUN apt-get update
 RUN apt-get install -y curl
 
 # Install Node.JS
-RUN cd /usr/local && curl http://nodejs.org/dist/v0.10.37/node-v0.10.37-linux-x64.tar.gz | tar --strip-components=1 -zxf- && cd
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
+RUN sudo apt-get install -y nodejs
 RUN npm -g update npm
 RUN npm install -g nightwatch
+RUN npm install -g gulp
+RUN npm install -g phantomjs
 RUN npm install -g forever
 RUN npm install apidoc -g
 
