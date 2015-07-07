@@ -4,33 +4,33 @@ var expect = chai.expect;
 module.exports = {
     'Verify Aurora is up and Live' : function (browser) {
         browser
-            .url('http://aurora.mythsoftware.com/')
+            .url('http://aurora.mythsoftware.com/recalls')
             .waitForElementVisible("#crit-navbar", 1000)
             .assert.title('Aurora')
             .assert.containsText('body', 'Track food threats near you')
             .pause(1000)
-            .click("#crit-navbar .date-ranges .dropdown-toggle")
-            .waitForElementVisible(".date-ranges .dropdown-menu .ng-binding[ng-click=\"selectWhen(\'FIVE_YEARS\')\"]", 1000)
+            .click("#crit-navbar .dropdown-toggle")
+            .waitForElementVisible(".dropdown-menu .ng-binding[ng-click=\"selectWhen(\'FIVE_YEARS\')\"]", 1000)
     },
 
     'Select the month and verify' : function (browser) {
         browser
-            .click(".date-ranges .dropdown-menu .ng-binding[ng-click=\"selectWhen(\'SIX_MONTHS\')\"]")
+            .click(".dropdown-menu .ng-binding[ng-click=\"selectWhen(\'SIX_MONTHS\')\"]")
             .waitForElementVisible("button[data-toggle=\"dropdown\"] ", 1500)
     },
     'Select State dropdown' : function (browser) {
         browser
             .assert.containsText("button[data-toggle=\"dropdown\"] ", "Select State")
             .click("button[data-toggle=\"dropdown\"] ")
-            .waitForElementVisible("ul.dropdown-menu .ng-scope a[href=\"/VA\"]", 1500)
-            .assert.containsText("ul.dropdown-menu .ng-scope a[href=\"/VA\"]", "Virginia")
+            .waitForElementVisible(".dropdown-menu .ng-scope a.ng-binding[href=\"/recalls/VA\"]", 1500)
+            .assert.containsText("ul.dropdown-menu .ng-scope a.ng-binding[href=\"/recalls/VA\"]", "Virginia")
 
     },
     'Select State VA and wait for results' : function (browser) {
         browser
-            .click("ul.dropdown-menu .ng-scope a[href=\"/VA\"]")
-            .waitForElementVisible("ul.nav.nav-tabs a[href=\"/VA\"] span.stateDropdown", 3000)
-            .assert.containsText("ul.nav.nav-tabs a[href=\"/VA\"] span.stateDropdown", "Virginia")
+            .click("ul.dropdown-menu .ng-scope a.ng-binding[href=\"/recalls/VA\"]")
+            .waitForElementVisible("ul.nav.nav-tabs a[href=\"/recalls/VA\"] span.stateDropdown", 3000)
+            .assert.containsText("ul.nav.nav-tabs a[href=\"/recalls/VA\"] span.stateDropdown", "Virginia")
             .waitForElementVisible("span.badge", 1000)
 
     },
@@ -54,7 +54,6 @@ module.exports = {
             browser
                  .waitForElementVisible("li.recall-li", 1000)
                  .click("span.glyphicon.glyphicon-remove")
-
             else
             browser
                 .click("span.glyphicon.glyphicon-remove")
