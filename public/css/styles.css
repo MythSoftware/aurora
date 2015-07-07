@@ -7,6 +7,15 @@ body {
   outline:none;
 }
 
+.round {
+  border-radius: 50%;
+  background: lightblue;
+  border: 1px solid lightblue;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+}
+
 .navbar-default {
   background-color: white;
 }

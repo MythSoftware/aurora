@@ -3,11 +3,80 @@ block content
   img(src="images/about_banner.jpg" class="img-responsive")
   div.container.upper-padding
     div(class="jumbotron")
+      div(class = "pull-right")
+        img(src = "images/mythsoftware.png" width = 300)
 
       p {{aboutmessage}}
       br
       h3 Who are we?
       p {{aboutus}}
+      br
+      div(class="row")
+        div(class="col-md-6")
+          h3 Our Team
+          img(src="images/mythsoftware-character4-test.png" class="round" title="Product Manager")
+          &nbsp &nbsp
+          img(src="images/mythsoftware-character2-test.png" class="round" title="Front End Developer")
+          &nbsp &nbsp
+          img(src="images/mythsoftware-character3-test.png" class="round" title="Front End Developer")
+          &nbsp &nbsp
+          img(src="images/mythsoftware-character1-test.png" class="round" title="Dev Ops Engineer")
+          &nbsp &nbsp
+          img(src="images/mythsoftware-character5-test.png" class="round" title="Back End Developer")
+          &nbsp &nbsp
+          img(src="images/mythsoftware-character6-test.png" class="round" title="Content Designer")
+          &nbsp &nbsp
+          img(src="images/female_silhouette.png" class="round" title="Visual Designer")
+          &nbsp &nbsp
+          img(src="images/male_silhouette.png" class="round" title="Dev Ops Engineer")
+        div(class="col-md-6")
+          h3 Licenses
+          br
+          table(class="table table-condensed" border= "black")
+            thead
+              tr
+                th Name
+                th License Type
+            tbody
+              tr
+                td Chai
+                td MIT
+              tr
+                td Angular
+                td MIT
+              tr
+                td Docker
+                td Apache 2.0
+              tr
+                td Nightwatch
+                td MIT
+              tr
+                td Node
+                td MIT
+              tr
+                td Bootstrap
+                td MIT
+              tr
+                td Express
+                td MIT
+              tr
+                td Selenium
+                td Apache 2.0
+              tr
+                td Jasmine
+                td MIT
+              tr
+                td Jenkins
+                td MIT
+              tr
+                td Ansible
+                td GNU General Public
+              tr
+                td Phantom
+                td BSD
+              tr
+                td Gulp
+                td MIT
       p
         br
         div(class="footer text-center ng-scope")
@@ -40,3 +109,7 @@ block content
             img(src="images/jenkins.png" alt="Jenkins" title="Jenkins" class="footer-icon" width = 42)
           a(href = "http://www.ansible.com/home" target = "_blank")
             img(src="images/ansible.png" alt="Ansible" title="Ansible" class="footer-icon" width = 42)
+          a(href = "http://phantomjs.org/" target = "_blank")
+            img(src="images/phantomjs.png" alt="PhantomJS" title="PhantomJS" class="footer-icon" width = 42)
+          a(href = "http://gulpjs.com/" target = "_blank")
+            img(src="images/gulp.png" alt="GulpJS" title="GulpJS" class="footer-icon" width = 21)
