@@ -35,7 +35,7 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-requirejs": "^0.2.2",
     "karma-safari-launcher": "^0.1.1",
-      "phantomjs": "^1.9.17",
+    "phantomjs": "^1.9.17",
     "lodash": "^3.10.0",
     "requirejs": "^2.1.18",
     "selenium-standalone": "~4.4.2"
