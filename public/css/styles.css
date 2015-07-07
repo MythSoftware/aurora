@@ -2,9 +2,47 @@ body {
   padding-top: 50px;
 }
 
+.image {
+  display:inline;
+  position: relative;
+  width: 100%;
+}
+
+h2{
+  display:inline;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 100%;
+}
+
+h2 span {
+  display:inline;
+  color: white;
+  font: bold 12px/22.5px Helvetica, San-Serif;
+  letter-spacing: -1px;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,0.7);
+  pafding:10px;
+}
+
+h2 span.spacer{
+  display:inline;
+  padding:0 5px;
+}
+
 .pad-top-15{
   padding-top: 15px;
   outline:none;
+}
+
+.round {
+  border-radius: 50%;
+  background: lightblue;
+  border: 1px solid lightblue;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
 }
 
 .navbar-default {
