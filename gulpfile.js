@@ -4,7 +4,7 @@ var selenium = require('selenium-standalone');
 var mocha = require('gulp-mocha');
 var nightwatch = require('gulp-nightwatch');
 var karma = require('karma').server;
-var karma = require('gulp-karma');
+var karma_gulp = require('gulp-karma');
 
 var testFiles = [
     //'tests/js/todo.js',
@@ -74,9 +74,9 @@ gulp.task('unit_test', function (done) {
 
 gulp.task('karma_test', function() {
     gulp.src(testFiles)
-        .pipe(karma({
+        .pipe(karma_gulp({
             configFile: 'karma.conf.js',
-            action: 'watch'
+            singleRun: true
         }));
 });
 
