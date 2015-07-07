@@ -5,10 +5,9 @@
   vars:
     serverName: orcha
   tasks:
+    - shell: curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
     - name: Install NodeJS
-      apt: name=nodejs=0.12.6 state=present
-    - name: Install NPM
-      apt: name=npm state=present
+      apt: name=nodejs state=present
     - name: Create symlink to node
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Create Directory for Code
@@ -26,10 +25,9 @@
   tasks:
     - name: Allow HTTP port 8888
       ufw: rule=allow port=8888 proto=tcp
+    - shell: curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
     - name: Install NodeJS
-      apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
-    - name: Install NPM
-      apt: name=npm state=present
+      apt: name=nodejs state=present
     - name: Create symlink to node
       file: src='/usr/bin/nodejs' dest='/usr/bin/node' owner='orcha' group='orcha' state='link'
     - name: Install git
