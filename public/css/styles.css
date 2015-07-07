@@ -53,9 +53,7 @@ body {
   border-color: #656565;
 }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #fdfa00;
-}
+
 
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #656565;
@@ -134,6 +132,9 @@ body {
 }
 .red-alert{
   color:red;
+}
+.white-font{
+  color:white;
 }
 .recall-panel .label-container {
   float: left;
@@ -243,6 +244,18 @@ input.search-query {
   background-color: white;
   border: none;
   outline:none;
+}
+.alert-warning{
+  background-color:#fefebf;
+}
+.label-warning {
+  background-color: #DB9602;
+}
+.label-danger {
+  background-color: #AB0115;
+}
+.label-success {
+  background-color: #609616;
 }
 
 .above-map-banner-font{
