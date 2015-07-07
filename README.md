@@ -10,7 +10,7 @@
 1. Install [Docker](https://www.docker.com)
 2. Clone the [Aurora repository](https://github.com/MythSoftware/aurora) from GitHub.  [Help Me](https://help.github.com/articles/fetching-a-remote/)
 3. Change directory to the project home
-  - *cd /path/to/aurora/web*
+  - *cd /path/to/aurora*
 4. Run this convenience script to build a docker container and run it
   - *./devops/start.sh* (tested in Ubuntu 14.04)
 5. Navigate to **[http://localhost:8888](http://localhost:8888)**
