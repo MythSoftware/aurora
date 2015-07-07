@@ -47,9 +47,9 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar")
         button#show-graph-button(ng-click="toggleGraph()", class="btn btn-default {{isShowingGraph() && 'active' || ''}}")
           span(class="glyphicon glyphicon-stats")
 
-  div#crit-navbar-hidden(class="crit-navbar navmenu navmenu-default navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
-    div(class="navbar navbar-default")
-      h5(class="navmenu-brand") Filter
+  div#crit-navbar-hidden(class="crit-navbar  navmenu navmenu-default navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
+    div(class="navbar navbar-default gray-map-background")
+      h5(class="navmenu-brand") Filter Results
       ul(class="nav navbar-nav")
         li(class="dropdown")
           a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}
@@ -77,9 +77,9 @@ nav(ng-controller="CritCtrl as critCtrl", ng-init="init()", class="crit-navbar")
               a(ng-click="selectClassification('CLASS_II')") {{getClassificationLabel('CLASS_II')}}
             li
               a(ng-click="selectClassification('CLASS_III')") {{getClassificationLabel('CLASS_III')}}
-        div(class="row-fluid")
+        div(class="row-fluid ")
           div(class="search-form-group form-group")
-            div(class="col-xs-8")
+            div(class="col-xs-8 ")
               span(ng-if="!isSearching()", class="input-icon glyphicon glyphicon-search")
               span(ng-if="isSearching()", class="input-icon")
                 img(src="/images/loading16.gif")

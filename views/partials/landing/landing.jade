@@ -6,7 +6,7 @@ block content
     div.row
       br
       div.col-lg-5.col-lg-offset-2.col-md-6.col-md-offset-2.col-sm-5.col-sm-offset-2.col-xs-offset-2
-        span To get started, either enter your zip code or click on a state below.
+        span To get started: Enter your zip code or click on a state below.
       div.form-group.col-lg-3.col-md-3.col-sm-offset-0.col-sm-4.col-xs-8.col-xs-offset-2
         form(ng-submit="findState()")
           button(type="submit" class="btn btn-default" style="float: right")
@@ -61,11 +61,11 @@ block content
 
 
 
-div#crit-navbar-hidden(class="crit-navbar navmenu navmenu-default navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
-  div(class="navbar navbar-default")
-    h5(class="navmenu-brand") Filter
+div#crit-navbar-hidden(class="crit-navbar navmenu navmenu-default  navmenu-fixed-right hidden-sm hidden-md hidden-lg offcanvas-xs")
+  div(class="navbar navbar-default gray-map-background")
+    h5(class="navmenu-brand") Filter Map
     ul(class="nav navbar-nav")
-      li(class="dropdown")
+      li(class="dropdown ")
         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") {{getWhenLabel(getCriteria().when)}}&nbsp;
           span(class="caret")
         ul(class='dropdown-menu')
