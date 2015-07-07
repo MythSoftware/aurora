@@ -6,7 +6,7 @@
     serverName: orcha
   tasks:
     - name: Install NodeJS
-      apt: name=nodejs=0.10.25~dfsg2-2ubuntu1 state=present
+      apt: name=nodejs=0.12.6 state=present
     - name: Install NPM
       apt: name=npm state=present
     - name: Create symlink to node
